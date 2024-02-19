@@ -38,6 +38,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+<<<<<<< HEAD
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -64,5 +65,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+=======
+>>>>>>> 167894538790ce3ca3b16f678b956c142c7450e7
   </component>
 </module>
