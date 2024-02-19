@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Game.java
 public class Game {
     private Player playerGameMapping;
     private Player currentPlayer;
@@ -46,4 +47,10 @@ public class Game {
         return;
     }
 
+=======
+package main;
+
+public class Game {
+    
+>>>>>>> f184f00fee2b9c90f7206a693e49cd7b38151531:main/Game.java
 }
