@@ -64,15 +64,6 @@ public class Player {
         this.codesDeciphered = codesDeciphered;
     }
 
-    public void incrementCodesDeciphered(){
-        ++this.codesDeciphered;
-    }
-    }
-
-    public void incrementCodesAttempted(){
-        ++this.codesAttempted;
-    }
-    
     public void setCodesAttempted(int codesAttempted) {
         this.codesAttempted = codesAttempted;
     }
@@ -80,6 +71,13 @@ public class Player {
     // METHODS
     // -------
 
+    public void incrementCodesDeciphered(){
+        ++this.codesDeciphered;
+    }
+
+    public void incrementCodesAttempted(){
+    ++this.codesAttempted;
+    }
 
 
 
