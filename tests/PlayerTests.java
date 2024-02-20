@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTests {
+    // TODO: REFACTOR TEST
     @Test
     public void testPlayer(){
         Player player = new Player();
