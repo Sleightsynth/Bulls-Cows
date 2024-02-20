@@ -17,14 +17,14 @@ Welcome to the CS207 Group 5 Git Repository for the Bulls and Cows Assignment!
 3. As a player I want to be able to undo a letter/number so I can try to decipher the secret code
 
 - [ ] Create POJO Classes
-        - [ ] Player
+        - [x] Player
         - [ ] Players
-        - [ ] Game
+        - [x] Game
         - [ ] SecretCode
         - [ ] LetterCode
         - [ ] NumberCode
 - [ ] Test POJO Classes
-        - [ ] Player
+        - [x] Player
         - [ ] Players
         - [ ] Game
         - [ ] SecretCode
