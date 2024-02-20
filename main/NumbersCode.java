@@ -1,6 +1,6 @@
 package main;
 
-public class NumbersCode {
+public class NumbersCode implements SecretCode{
 
     NumbersCode() {
 

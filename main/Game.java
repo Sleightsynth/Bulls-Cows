@@ -4,9 +4,7 @@ public class Game {
     private Player playerGameMapping;
     private Player currentPlayer;
 
-    public void Game(Player P, String CodeType) {
 
-    }
 
     public void Game(Player P) {
 

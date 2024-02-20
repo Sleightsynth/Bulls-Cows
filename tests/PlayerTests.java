@@ -1,39 +1,42 @@
 package tests;
 import main.Player;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTests {
-    // TODO: REFACTOR TEST
-    @Test
-    public void testPlayer(){
-        Player player = new Player();
-        assertNotNull(player);
-        assertNull(player.getUsername());
-        assertEquals( 0, player.getNumberOfBulls());
-        assertEquals( 0, player.getNumberOfCows());
-        assertEquals(0, player.getCodesAttempted());
-        assertEquals(0, player.getCodesDeciphered());
 
-        player.setUsername("JDoe");
-        player.setCodesAttempted(3);
-        player.setCodesDeciphered(1);
-        player.setNumberOfBulls(3);
-        player.setNumberOfCows(2);
+    private Player player;
 
-        assertEquals("JDoe", player.getUsername());
-        assertEquals(3, player.getCodesAttempted());
-        assertEquals(1, player.getCodesDeciphered());
-        assertEquals( 3, player.getNumberOfBulls());
-        assertEquals( 2, player.getNumberOfCows());
-
-        player.incrementCodesAttempted();
-        player.incrementCodesDeciphered();
-        player.incrementCodesDeciphered();
-
-        assertEquals(4, player.getCodesAttempted());
-        assertEquals(3, player.getCodesDeciphered());
+    @BeforeEach
+    public void setUp(){
+        player = new Player("JDoe", 3, 1, 3, 2);
     }
 
+    @Test
+    public void testPlayer(){
+        assertNotNull(player);
+
+        assertEquals("JDoe", player.getUsername());
+        assertEquals( 3, player.getNumberOfBulls());
+        assertEquals( 1, player.getNumberOfCows());
+        assertEquals(3, player.getCodesAttempted());
+        assertEquals(2, player.getCodesDeciphered());
+    }
+
+    @Test
+    public void testIncrementAttempts(){
+        assertEquals(3, player.getCodesAttempted());
+        player.incrementCodesAttempted();
+        assertEquals(4, player.getCodesAttempted());
+    }
+
+    @Test
+    public void testIncrementDeciphered(){
+        assertEquals(2, player.getCodesDeciphered());
+        player.incrementCodesDeciphered();
+        player.incrementCodesDeciphered();
+        assertEquals(4, player.getCodesDeciphered());
+    }
 }
