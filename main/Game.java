@@ -16,8 +16,6 @@ public class Game {
         this.currentPlayer = currentPlayer;
     }
 
-
-
     public void getHint() {
 
     }
@@ -38,23 +36,48 @@ public class Game {
                 this.requestCode(new LetterCode());
             else if(user_input.equalsIgnoreCase("number"))
                 this.requestCode(new NumbersCode());
-            else
+            else if (user_input.equalsIgnoreCase("quit"))
                 continue;
 
             //TODO: Get players next command / A guess / A hint / To save / To undo / Load Game
 
+            this.enterGuess();
+
         } while (!user_input.equalsIgnoreCase("quit"));
 
-        get_user_input.close();
     }
 
     public void requestCode(SecretCode code) {
         System.out.println(code.getClass());
-        this.currentCode = code;
+        if(code.getClass() == LetterCode.class)
+        {
+            this.currentCode = new LetterCode();
+        }
+        else
+        {
+            NumbersCode numberCode = new NumbersCode();
+            numberCode.getCode();
+            this.currentCode = numberCode;
+        }
     }
 
     public void enterGuess() {
+        Scanner get_user_input = new Scanner(System.in);
+        String user_input;
+        do{
 
+            System.out.println("Please make a guess");
+            user_input = get_user_input.nextLine();
+            if(user_input.equalsIgnoreCase("quit")) continue;
+
+            if(user_input.equalsIgnoreCase(this.currentCode.toString())) {
+                System.out.println("YOU WIN");
+                this.currentCode.setDecipheredCode(true);
+            }
+            else
+                System.out.println("Try Again");
+
+        }while(!user_input.equalsIgnoreCase("quit") && !this.currentCode.isDecipheredCode());
     }
 
     public void undoGuess() {

@@ -1,4 +1,4 @@
 package main;
 
-public class LetterCode implements SecretCode{
+public class LetterCode extends SecretCode{
 }

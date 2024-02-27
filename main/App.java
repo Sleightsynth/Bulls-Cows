@@ -82,12 +82,14 @@ public class App {
         System.out.print("Enter Name to Begin\n>>");
         user_input = get_user_input.nextLine();
         System.out.println("Welcome : " + user_input);
-        get_user_input.close();
 
         Players players = new Players();
         Player player = new Player(user_input);
         Game game = new Game(players.findPlayer(player));
+
         game.playGame();
+
+        get_user_input.close();
 
     }
 

@@ -1,33 +1,49 @@
 package main;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
-public class NumbersCode implements SecretCode{
-
-    private boolean decipheredCode;
-    private int code;
+public class NumbersCode extends SecretCode{
 
 
+    private int secretCode;
 
     NumbersCode() {
-        this.decipheredCode = false;
-        Random ran = new Random();
-        this.code = ran.nextInt(999,9999);
     }
 
-    public void setDecipheredCode(boolean deciphered)
-    {
-        this.decipheredCode = deciphered;
-    }
+    public void getCode() {
+        Random random = new Random();
+        int secretNumberCode = 0;
 
-    public int getCode() {
-        return this.code;
+        do{
+            Set<Integer> used_digits = new HashSet<>();
+            int[] code_array = new int[4];
+            int insertion_index = 0;
+
+            do {
+                int nextDigit = random.nextInt(10);
+
+                if (used_digits.contains(nextDigit))
+                    continue;
+
+                used_digits.add(nextDigit);
+                code_array[insertion_index] = nextDigit;
+                ++insertion_index;
+
+            } while (insertion_index < 3);
+
+            secretNumberCode += code_array[0] * 1000;
+            secretNumberCode += code_array[1] * 100;
+            secretNumberCode += code_array[2] * 10;
+            secretNumberCode += code_array[3];
+            this.secretCode = secretNumberCode;
+
+        }while (secretNumberCode < 1000);
     }
 
     @Override
-    public String toString()
-    {
-        return String.valueOf(this.code);
+    public String toString(){
+        return String.valueOf(this.secretCode);
     }
-
 }
