@@ -13,6 +13,7 @@ public class Player {
     // ------------
     
     public Player(){}
+    public Player(String username){this.username=username;}
 
     public Player(
         String username, int numberOfBulls, int numberOfCows, int codesAttempted, int codesDeciphered

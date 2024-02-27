@@ -62,45 +62,33 @@ public class App {
             title.add("============================    CC         CCC  CCC       CC CC     CCC       CC  CC         ============================                 ");
             title.add("============================      CCCCC      CCCC          CCC       C         CCCC          ============================                 ");
             title.add("=========================================================================================================================                 ");
+
+            for(String line : banner){
+                System.out.println(line);
+            }
+            TimeUnit.SECONDS.sleep(2);
+            for(String line : title){
+                System.out.println(line);
+            }
+            TimeUnit.SECONDS.sleep(2);
+            for (int i = 0; i < 100; i++) {
+                System.out.println();
+            }
         }
 
-        Player player = new Player();
-        SecretCode code;
+
         Scanner get_user_input = new Scanner(System.in);
         String user_input;
-
-        for(String line : banner){
-            System.out.println(line);
-        }
-        TimeUnit.SECONDS.sleep(2);
-        for(String line : title){
-            System.out.println(line);
-        }
-        TimeUnit.SECONDS.sleep(2);
-        for (int i = 0; i < 100; i++) {
-            System.out.println();
-        }
-
         System.out.print("Enter Name to Begin\n>>");
         user_input = get_user_input.nextLine();
         System.out.println("Welcome : " + user_input);
-
-        do {
-            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n>>");
-            user_input = get_user_input.nextLine();
-
-            if(user_input.equalsIgnoreCase("letter"))
-            {
-                code = new LetterCode();
-            }
-            else if(user_input.equalsIgnoreCase("number"))
-            {
-                code = new NumbersCode();
-            }else
-                continue;
-
-        } while (!user_input.equalsIgnoreCase("quit"));
-
         get_user_input.close();
+
+        Players players = new Players();
+        Player player = new Player(user_input);
+        Game game = new Game(players.findPlayer(player));
+        game.playGame();
+
     }
+
 }
