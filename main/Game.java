@@ -48,7 +48,6 @@ public class Game {
     }
 
     public void requestCode(SecretCode code) {
-        System.out.println(code.getClass());
         if(code.getClass() == LetterCode.class)
         {
             this.currentCode = new LetterCode();
@@ -65,13 +64,15 @@ public class Game {
         Scanner get_user_input = new Scanner(System.in);
         String user_input;
         do{
-
-            System.out.println("Please make a guess");
+            System.out.print("Please make a guess\n>>");
             user_input = get_user_input.nextLine();
             if(user_input.equalsIgnoreCase("quit")) continue;
 
+            if(undoGuess(user_input)) continue;
+
             if(user_input.equalsIgnoreCase(this.currentCode.toString())) {
-                System.out.println("YOU WIN");
+
+                System.out.println("You are correct");
                 this.currentCode.setDecipheredCode(true);
             }
             else
@@ -80,8 +81,28 @@ public class Game {
         }while(!user_input.equalsIgnoreCase("quit") && !this.currentCode.isDecipheredCode());
     }
 
-    public void undoGuess() {
+    public boolean undoGuess(String user_input) {
+        Scanner get_user_input = new Scanner(System.in);
+        do{
+            System.out.printf("Your guess is '%s'\nAre you sure?\n- y\t- n\n>>", user_input);
 
+            user_input = get_user_input.nextLine();
+
+            if(user_input.equalsIgnoreCase("y"))
+            {
+                break;
+            }
+            else if(user_input.equalsIgnoreCase("n"))
+            {
+                return true;
+            }
+            else
+            {
+                System.out.println("Please Select:\n\t- y\n\t- n");
+            }
+        }while(true);
+
+        return false;
     }
 
     public void saveGame() {

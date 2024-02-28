@@ -84,7 +84,9 @@ public class App {
         System.out.println("Welcome : " + user_input);
 
         Players players = new Players();
+
         Player player = new Player(user_input);
+
         Game game = new Game(players.findPlayer(player));
 
         game.playGame();

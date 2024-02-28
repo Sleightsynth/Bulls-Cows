@@ -30,12 +30,12 @@ Welcome to the CS207 Group 5 Git Repository for the Bulls and Cows Assignment!
         - [ ] SecretCode
         - [ ] LetterCode
         - [ ] NumberCode
-- [ ] Create intro to game
-- [ ] Allow users to request a code
+- [x] Create intro to game
+- [x] Allow users to request a code
 - [ ] Test code request workd
-- [ ] Allow users to make a guess
+- [x] Allow users to make a guess
 - [ ] Test guessing
-- [ ] Check users guess
+- [x] Check users guess
 - [ ] Test checks
-- [ ] Allow users to undo letter/number to try and decipher code
+- [x] Allow users to undo letter/number to try and decipher code
 - [ ] Test undo
