@@ -51,6 +51,7 @@ public class Game {
         if(code.getClass() == LetterCode.class)
         {
             this.currentCode = new LetterCode();
+            LetterCode.getCode();
         }
         else
         {
