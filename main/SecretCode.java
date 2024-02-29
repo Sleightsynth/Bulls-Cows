@@ -1,6 +1,9 @@
 package main;
 
 public class SecretCode {
+
+    private String secretCode;
+
     private boolean decipheredCode;
 
     public SecretCode(){
@@ -14,5 +17,9 @@ public class SecretCode {
 
     public boolean isDecipheredCode() {
         return decipheredCode;
+    }
+
+    public void getCode(){
+
     }
 }
