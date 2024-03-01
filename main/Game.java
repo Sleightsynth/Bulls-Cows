@@ -70,7 +70,7 @@ public class Game {
                     System.out.println();
                 } else {
                     //TODO: Display cows and bulls
-
+                    System.out.println(String.format("Bulls -> %d%nCows -> %d", this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows()));
                     System.out.println("You are wrong\nPlease try again");
                 }
 
@@ -82,12 +82,21 @@ public class Game {
     }
 
     public void requestCode(String user_input) {
-        if (user_input.equalsIgnoreCase("letter"))
-            this.currentCode = new LetterCode();
-        else if (user_input.equalsIgnoreCase("number")) {
-            NumbersCode numberCode = new NumbersCode();
-            numberCode.getCode();
-            this.currentCode = numberCode;
+        boolean accept_input = false;
+        while(!accept_input){
+            if (user_input.equalsIgnoreCase("letter")) {
+                this.currentCode = new LetterCode();
+                accept_input = true;
+            }
+            else if (user_input.equalsIgnoreCase("number")) {
+                NumbersCode numberCode = new NumbersCode();
+                numberCode.getCode();
+                this.currentCode = numberCode;
+                accept_input = true;
+            }else{
+                System.out.println("Please enter:\n- Letter\t- Number");
+                user_input = getUserInput();
+            }
         }
     }
 
@@ -119,7 +128,6 @@ public class Game {
 
     public boolean checkGuess(String user_input) {
 
-        //TODO: Check guess here work out if they are correct if not bulls then cows
         if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
             this.currentCode.setDecipheredCode(true);
             this.currentPlayer.incrementCodesDeciphered();
@@ -132,8 +140,8 @@ public class Game {
             int numberOfCows = 0;
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    if(guess_arr[i] == code_arr[j])
-                        if(i==j)
+                    if (guess_arr[i] == code_arr[j])
+                        if (i == j)
                             ++numberOfBulls;
                         else
                             ++numberOfCows;
