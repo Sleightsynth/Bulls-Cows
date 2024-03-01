@@ -3,6 +3,7 @@ package tests;
 import main.LetterCode;
 import main.NumbersCode;
 import main.SecretCode;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -12,35 +13,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class NumberCodeTest {
 
+    SecretCode code;
+
+    @BeforeEach
+    public void setUp(){
+        this.code = new NumbersCode();
+    }
 
     @Test
     public void testConstruct(){
-        SecretCode code = new NumbersCode();
         assertEquals(NumbersCode.class, code.getClass());
         assertNotEquals(LetterCode.class, code.getClass());
         assertNotEquals(SecretCode.class, code.getClass());
     }
 
     @Test
-    public void testGetSecretCode(){
-
-        NumbersCode code = new NumbersCode();
-        assertNotEquals(0, code.getSecretCode());
+    public void testGetSecretNumberCode(){
+        assertNotEquals(0, Integer.parseInt(code.getSecretCode()));
     }
 
     @Test
     public void testSecretCodeValid(){
-        NumbersCode code = new NumbersCode();
         for (int i = 0; i < 100; i++) {
             assertTrue(
-                    code.getSecretCode() > 999 &&
-                    code.getSecretCode() < 10000
+            Integer.parseInt(code.getSecretCode()) > 999 &&
+                    Integer.parseInt(code.getSecretCode()) < 10000
             );
 
             char[] code_char_arr = String.valueOf(code.getSecretCode()).toCharArray();
 
-
-            Set<Character> setCheck = new HashSet();
+            Set<Character> setCheck = new HashSet<>();
             setCheck.add(code_char_arr[0]);
             setCheck.add(code_char_arr[1]);
             setCheck.add(code_char_arr[2]);

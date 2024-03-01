@@ -33,12 +33,9 @@ public class Game {
     }
 
     public void playGame() {
-
         String user_input;
-
         do {
             System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n>>");
-
             user_input = getUserInput();
 
             if (user_input.equalsIgnoreCase("quit")) {
@@ -63,22 +60,17 @@ public class Game {
                 if (undoGuess(user_input))
                     continue;
 
-                //TODO: CHECK BULLS AND COWS
-
                 if (checkGuess(this.guess)) {
                     System.out.println("You are correct");
-                    System.out.println();
                 } else {
-                    //TODO: Display cows and bulls
-                    System.out.println(String.format("Bulls -> %d%nCows -> %d", this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows()));
+                    System.out.printf(
+                            "Bulls -> %d%nCows -> %d%n",
+                            this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows()
+                    );
                     System.out.println("You are wrong\nPlease try again");
                 }
-
-
             } while (!this.currentCode.isDecipheredCode());
-
         } while (true);
-
     }
 
     public void requestCode(String user_input) {
@@ -86,18 +78,20 @@ public class Game {
         while(!accept_input){
             if (user_input.equalsIgnoreCase("letter")) {
                 this.currentCode = new LetterCode();
+                this.currentCode.getCode();
                 accept_input = true;
             }
             else if (user_input.equalsIgnoreCase("number")) {
-                NumbersCode numberCode = new NumbersCode();
-                numberCode.getCode();
-                this.currentCode = numberCode;
+                this.currentCode = new NumbersCode();
+                this.currentCode.getCode();
+
                 accept_input = true;
             }else{
                 System.out.println("Please enter:\n- Letter\t- Number");
                 user_input = getUserInput();
             }
         }
+        System.out.println(this.currentCode);
     }
 
     public boolean enterGuess(String user_input) {
@@ -127,7 +121,6 @@ public class Game {
     }
 
     public boolean checkGuess(String user_input) {
-
         if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
             this.currentCode.setDecipheredCode(true);
             this.currentPlayer.incrementCodesDeciphered();
@@ -138,15 +131,13 @@ public class Game {
             char[] code_arr = this.currentCode.toString().toCharArray();
             int numberOfBulls = 0;
             int numberOfCows = 0;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
                     if (guess_arr[i] == code_arr[j])
                         if (i == j)
                             ++numberOfBulls;
                         else
                             ++numberOfCows;
-                }
-            }
             this.currentPlayer.setNumberOfCows(numberOfCows);
             this.currentPlayer.setNumberOfBulls(numberOfBulls);
         }
