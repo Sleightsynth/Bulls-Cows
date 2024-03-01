@@ -62,6 +62,7 @@ public class App {
             title.add("============================    CC         CCC  CCC       CC CC     CCC       CC  CC         ============================                 ");
             title.add("============================      CCCCC      CCCC          CCC       C         CCCC          ============================                 ");
             title.add("=========================================================================================================================                 ");
+        }
 
             for(String line : banner){
                 System.out.println(line);
@@ -71,10 +72,7 @@ public class App {
                 System.out.println(line);
             }
             TimeUnit.SECONDS.sleep(2);
-            for (int i = 0; i < 100; i++) {
-                System.out.println();
-            }
-        }
+            System.out.println("\n\n");
 
 
         Scanner get_user_input = new Scanner(System.in);

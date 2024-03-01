@@ -9,37 +9,39 @@ public class NumbersCode extends SecretCode{
 
     private int secretCode;
 
-    NumbersCode() {
+    public NumbersCode() {
     }
 
+    @Override
     public void getCode() {
         Random random = new Random();
-        int secretNumberCode = 0;
 
-        do{
-            Set<Integer> used_digits = new HashSet<>();
-            int[] code_array = new int[4];
-            int insertion_index = 0;
+        do {
+            Set<Integer> usedDigits = new HashSet<>();
+            int[] codeArray = new int[4];
 
-            do {
-                int nextDigit = random.nextInt(10);
+            for (int i = 0; i < codeArray.length; i++) {
+                int nextDigit;
+                do {
+                    nextDigit = random.nextInt(10);
+                } while (usedDigits.contains(nextDigit));
 
-                if (used_digits.contains(nextDigit))
-                    continue;
+                usedDigits.add(nextDigit);
+                codeArray[i] = nextDigit;
+            }
 
-                used_digits.add(nextDigit);
-                code_array[insertion_index] = nextDigit;
-                ++insertion_index;
+            this.secretCode = codeArray[0] * 1000 + codeArray[1] * 100 + codeArray[2] * 10 + codeArray[3];
+        } while (this.secretCode < 1000);
+    }
 
-            } while (insertion_index < 3);
+    public int getSecretCode() {
+        if(this.secretCode == 0)
+            this.getCode();
+        return this.secretCode;
+    }
 
-            secretNumberCode += code_array[0] * 1000;
-            secretNumberCode += code_array[1] * 100;
-            secretNumberCode += code_array[2] * 10;
-            secretNumberCode += code_array[3];
-            this.secretCode = secretNumberCode;
-
-        }while (secretNumberCode < 1000);
+    public void setSecretCode(int secretCode) {
+        this.secretCode = secretCode;
     }
 
     @Override
