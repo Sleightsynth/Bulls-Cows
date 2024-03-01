@@ -32,17 +32,17 @@ public class LetterCode extends SecretCode{
         }
         catch (FileNotFoundException e){
             System.err.println("File not found.");
-            e.printStackTrace();
         }
     }
     public void getCode() {
         if (Words.isEmpty()) {
             System.err.println("No valid 4-letter words found in the file.");
             secretCode = null;
+        }else {
+            Random random = new Random();
+            int randomIndex = random.nextInt(Words.size());
+            secretCode = Words.get(randomIndex);
         }
-        Random random = new Random();
-        int randomIndex = random.nextInt(Words.size());
-        secretCode = Words.get(randomIndex);
     }
 
     public String getSecretCode() {

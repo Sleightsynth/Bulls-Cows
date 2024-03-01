@@ -45,6 +45,9 @@ public class Game {
 
             requestCode(user_input);
 
+            if(this.currentCode.getSecretCode() == null || this.currentCode.getSecretCode().equals("0"))
+                continue;
+
             do {
                 System.out.print("Please make a guess\n>>");
 

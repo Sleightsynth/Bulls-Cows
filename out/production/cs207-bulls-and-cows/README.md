@@ -15,9 +15,9 @@ Welcome to the CS207 Group 5 Git Repository for the Bulls and Cows Assignment!
 1. As a player I want to be able to request a secret code so I can try to decipher it.
 
 Scenario: Player requests letters secret code
-- [ ] Given there are words stored - Andy
-- [ ] When the player requests a secret code
-- [ ] Then a secret code representing an English word is returned and number of secret code attempts is updated.
+- [x] Given there are words stored - Andy
+- [x] When the player requests a secret code
+- [x] Then a secret code representing an English word is returned and number of secret code attempts is updated.
 
 Scenario: Player requests numbers secret code
 - [x] Given the player has opened the program
