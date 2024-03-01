@@ -9,14 +9,16 @@ import java.util.Scanner;
 
 public class LetterCode extends SecretCode{
 
-    private static List<String> Words;
+    private List<String> Words;
 
-    static {
+    private String secretCode;
+
+    public LetterCode() {
         Words = new ArrayList<>();
         loadWords();
     }
 
-    public static void loadWords() {
+    public void loadWords() {
         try {
             File file = new File("Data/LetterCode.txt");
 
@@ -35,14 +37,18 @@ public class LetterCode extends SecretCode{
             e.printStackTrace();
         }
     }
-    public static String getCode() {
+    public void getCode() {
         if (Words.isEmpty()) {
             System.err.println("No valid 4-letter words found in the file.");
-            return null;
+            secretCode = null;
         }
 
         Random random = new Random();
         int randomIndex = random.nextInt(Words.size());
-        return Words.get(randomIndex);
+        secretCode = Words.get(randomIndex);
+    }
+
+    public String getSecretCode() {
+        return secretCode;
     }
 }

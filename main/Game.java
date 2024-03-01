@@ -51,7 +51,7 @@ public class Game {
         if(code.getClass() == LetterCode.class)
         {
             this.currentCode = new LetterCode();
-            LetterCode.getCode();
+            this.currentCode.getCode();
         }
         else
         {
@@ -59,6 +59,7 @@ public class Game {
             numberCode.getCode();
             this.currentCode = numberCode;
         }
+        System.out.println(this.currentCode.getSecretCode());
     }
 
     public void enterGuess() {
