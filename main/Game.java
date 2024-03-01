@@ -65,11 +65,12 @@ public class Game {
 
                 //TODO: CHECK BULLS AND COWS
 
-                if (checkGuess(user_input)) {
+                if (checkGuess(this.guess)) {
                     System.out.println("You are correct");
                     System.out.println();
                 } else {
                     //TODO: Display cows and bulls
+
                     System.out.println("You are wrong\nPlease try again");
                 }
 

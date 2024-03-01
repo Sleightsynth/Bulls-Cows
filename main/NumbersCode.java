@@ -12,6 +12,7 @@ public class NumbersCode extends SecretCode{
     public NumbersCode() {
     }
 
+    @Override
     public void getCode() {
         Random random = new Random();
 

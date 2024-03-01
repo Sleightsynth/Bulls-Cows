@@ -42,9 +42,9 @@ Scenario: player enters the correct guess and successfully deciphers the code- A
 - [ ] Then a success message is displayed, their stats are updated and the game is finished
 
 Scenario: player enters a guess with an invalid length - ANDY
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters a guess with an invalid length 
-- [ ] Then an error message is displayed and they are asked to try again
+- [x] Given a secret code is displayed  
+- [x] When the player enters a guess with an invalid length 
+- [x] Then an error message is displayed and they are asked to try again
 
 Scenario: player enters an invalid guess for a letters code - ANDY 
 - [ ] Given a secret code is displayed  
@@ -52,21 +52,21 @@ Scenario: player enters an invalid guess for a letters code - ANDY
 - [ ] Then an error message is displayed and they are asked to try again 
 
 Scenario: player enters an invalid guess for a numbers code - JAMES
-- [ ] Given a secret code is displayed  
+- [x] Given a secret code is displayed  
 - [x] When the player enters a guess containing letters 
-- [ ] Then an error message is displayed and they are asked to try again
+- [x] Then an error message is displayed and they are asked to try again
 
 3. As a player I want to be able to undo a letter/number so I can try to decipher the secret code.
 
 Scenario: player wants to undo a single letter/number in the guess - JAMES SEAN STUART
-- [ ] Given a secret code is displayed and a guess has already been entered
-- [ ] When a player selects a letter/number to replace
-- [ ] Then the letter/number is replaced in the guess and the number of bulls and cows updated
+- [x] Given a secret code is displayed and a guess has already been entered
+- [x] When a player selects a letter/number to replace
+- [x] Then the letter/number is replaced in the guess and the number of bulls and cows updated
 
 Scenario: player wants to undo a single letter/number in the guess when the player hasn’t guessed yet
 - [ ] Given a secret code is displayed and a guess hasn’t already been entered
 - [ ] When a player selects a letter/number to replace
-- [ ]Then an error message is displayed to the player indicating a complete guess hasn’t been made yet
+- [ ] Then an error message is displayed to the player indicating a complete guess hasn’t been made yet
 
 Scenario: player wants to undo an invalid letter/number in the guess
 - [ ] Given a secret code is displayed and a guess has already been entered

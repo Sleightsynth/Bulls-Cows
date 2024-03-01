@@ -15,7 +15,7 @@ public class Players {
 
     public void savePlayers(){}
 
-    public Player findPlayer(Player player){return null;}
+    public Player findPlayer(Player player){return player;}
 
     public void addPlayer(Player player)
     {
