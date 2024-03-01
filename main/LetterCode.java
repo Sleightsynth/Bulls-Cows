@@ -46,6 +46,8 @@ public class LetterCode extends SecretCode{
     }
 
     public String getSecretCode() {
+        if(this.secretCode == null)
+            getCode();
         return secretCode;
     }
 

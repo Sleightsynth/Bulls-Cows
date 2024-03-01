@@ -221,6 +221,11 @@ class GameTest {
     }
 
     @Test
+    public void checkGuessTest(){
+
+    }
+
+    @Test
     public void requestLetterCode(){
         game.requestCode("letter");
         assertEquals(LetterCode.class, game.getCurrentCode().getClass());
