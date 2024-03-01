@@ -42,9 +42,9 @@ Scenario: player enters the correct guess and successfully deciphers the code- A
 - [ ] Then a success message is displayed, their stats are updated and the game is finished
 
 Scenario: player enters a guess with an invalid length - ANDY
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters a guess with an invalid length 
-- [ ] Then an error message is displayed and they are asked to try again
+- [x] Given a secret code is displayed  
+- [x] When the player enters a guess with an invalid length 
+- [x] Then an error message is displayed and they are asked to try again
 
 Scenario: player enters an invalid guess for a letters code - ANDY 
 - [ ] Given a secret code is displayed  

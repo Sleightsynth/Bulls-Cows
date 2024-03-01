@@ -48,9 +48,6 @@ public class Game {
 
             requestCode(user_input);
 
-
-            //TODO: Get players next command / A guess / A hint / To save / To undo / Load Game
-
             do {
                 System.out.print("Please make a guess\n>>");
 
@@ -67,12 +64,15 @@ public class Game {
                     continue;
 
                 //TODO: CHECK BULLS AND COWS
-                if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
+
+                if (checkGuess(user_input)) {
                     System.out.println("You are correct");
-                    this.currentCode.setDecipheredCode(true);
+                    System.out.println();
                 } else {
+                    //TODO: Display cows and bulls
                     System.out.println("You are wrong\nPlease try again");
                 }
+
 
             } while (!this.currentCode.isDecipheredCode());
 
@@ -114,6 +114,34 @@ public class Game {
 
         this.guess = user_input;
         return true;
+    }
+
+    public boolean checkGuess(String user_input) {
+
+        //TODO: Check guess here work out if they are correct if not bulls then cows
+        if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
+            this.currentCode.setDecipheredCode(true);
+            this.currentPlayer.incrementCodesDeciphered();
+            this.currentPlayer.setNumberOfBulls(4);
+            return true;
+        } else {
+            char[] guess_arr = user_input.toCharArray();
+            char[] code_arr = this.currentCode.toString().toCharArray();
+            int numberOfBulls = 0;
+            int numberOfCows = 0;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if(guess_arr[i] == code_arr[j])
+                        if(i==j)
+                            ++numberOfBulls;
+                        else
+                            ++numberOfCows;
+                }
+            }
+            this.currentPlayer.setNumberOfCows(numberOfCows);
+            this.currentPlayer.setNumberOfBulls(numberOfBulls);
+        }
+        return false;
     }
 
     public boolean undoGuess(String user_input) {
