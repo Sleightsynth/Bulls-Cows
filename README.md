@@ -22,7 +22,7 @@ Scenario: Player requests letters secret code
 Scenario: Player requests numbers secret code
 - [x] Given the player has opened the program
 - [x] When the player requests a secret code
-- [x] Then a secret code is generated representing a sequence of unique numbers and number of secret code attempts is updated. 
+- [x] Then a secret code is generated representing a sequence of unique numbers and number of secret code attempts is updated.
 
 Scenario: Player requests a letters secret code but no phrases file exists - Andy
 - [ ] Given there are no words stored
@@ -32,28 +32,28 @@ Scenario: Player requests a letters secret code but no phrases file exists - And
 2. As a player I want to be able to enter a guess so I can decipher the secret code.
 
 Scenario: player enters a guess ANDY
-- [ ] Given a secret code is displayed 
-- [ ] When the player enters a guess 
-- [ ] Then the number of bulls and cows are displayed and the player stats are updated 
+- [ ] Given a secret code is displayed
+- [ ] When the player enters a guess
+- [ ] Then the number of bulls and cows are displayed and the player stats are updated
 
 Scenario: player enters the correct guess and successfully deciphers the code- ANDY
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters the correct guess 
+- [ ] Given a secret code is displayed
+- [ ] When the player enters the correct guess
 - [ ] Then a success message is displayed, their stats are updated and the game is finished
 
 Scenario: player enters a guess with an invalid length - ANDY
-- [x] Given a secret code is displayed  
-- [x] When the player enters a guess with an invalid length 
+- [x] Given a secret code is displayed
+- [x] When the player enters a guess with an invalid length
 - [x] Then an error message is displayed and they are asked to try again
 
-Scenario: player enters an invalid guess for a letters code - ANDY 
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters a guess containing numbers 
-- [ ] Then an error message is displayed and they are asked to try again 
+Scenario: player enters an invalid guess for a letters code - ANDY
+- [ ] Given a secret code is displayed
+- [ ] When the player enters a guess containing numbers
+- [ ] Then an error message is displayed and they are asked to try again
 
 Scenario: player enters an invalid guess for a numbers code - JAMES
-- [x] Given a secret code is displayed  
-- [x] When the player enters a guess containing letters 
+- [x] Given a secret code is displayed
+- [x] When the player enters a guess containing letters
 - [x] Then an error message is displayed and they are asked to try again
 
 3. As a player I want to be able to undo a letter/number so I can try to decipher the secret code.
