@@ -10,7 +10,7 @@ public class App {
     private static ArrayList<String> title;
 
 
-    public static void main(String[] args) throws InterruptedException {
+public static void main(String[] args) throws InterruptedException {
         {
             banner = new ArrayList<>();
             title = new ArrayList<>();

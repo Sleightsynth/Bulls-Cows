@@ -98,6 +98,7 @@ public class Game {
     }
 
     public boolean enterGuess(String user_input) {
+        String pattern = "^[a-zA-Z]*$";
         if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
                 Integer.parseInt(user_input);
@@ -105,9 +106,8 @@ public class Game {
                 System.out.println("Only numbers can be entered!\nTry Again\n");
                 return false;
             }
-        } else {
-            String pattern = "^[a-zA-Z]*$";
-            if (!user_input.matches(pattern))
+        } else if (!user_input.matches(pattern)) {
+                System.out.println("Only letters can be entered!\n Try Again\n");
                 return false;
         }
 
