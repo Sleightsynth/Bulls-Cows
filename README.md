@@ -73,3 +73,20 @@ Scenario: player wants to undo an invalid letter/number in the guess
 - [ ] When a player selects an invalid letter/number to replace
 - [ ] Then an error message is displayed and they are asked to try again
 
+4. As a player I want to be able to save a secret code so I can try to decipher it at another time
+
+5. As a player I want to be able to load a secret code so I can continue trying to decipher a saved secret code
+
+7. As a player I want to store my player name so the software can track my game play statistics
+
+8. As a player I want the software to track the number of secret codes I have successfully deciphered
+
+9. As a player I want the software to track the number of secret codes I have attempted to decipher so I can see how many I’ve attempted
+
+10. As a player I want the software to track the number of bulls and cows I have guessed so I can see how accurate I am as a percentage of my total number of guesses
+
+11. As a player I want to display my game play statistics so I can see my performance
+
+12. As a player I want to load my details so I can track my game play statistics
+
+NOTE - for the purpose of marking, store my player name and tracking the secret codes deciphered, attempted and correct guesses will be counted as a single user story
