@@ -150,7 +150,6 @@ public class Game {
     public boolean undoGuess(String user_input) {
         while (true)
             if (user_input.equalsIgnoreCase("y")) {
-                this.currentPlayer.incrementCodesAttempted();
                 return false;
             } else if (user_input.equalsIgnoreCase("n")) {
                 this.guess = null;
