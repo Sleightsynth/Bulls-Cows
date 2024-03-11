@@ -237,4 +237,19 @@ class GameTest {
         assertEquals(NumbersCode.class, game.getCurrentCode().getClass());
     }
 
+    @Test
+    public void incrementLetterCode(){
+        assertEquals(5, player.getCodesAttempted());
+        game.requestCode("letter");
+        assertEquals(6, player.getCodesAttempted());
+    }
+
+    @Test
+    public void incrementNumberCode(){
+        assertEquals(5, player.getCodesAttempted());
+        game.requestCode("number");
+        assertEquals(6, player.getCodesAttempted());
+    }
+
+
 }
