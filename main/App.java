@@ -10,7 +10,7 @@ public class App {
     private static ArrayList<String> title;
 
 
-    public static void main(String[] args) throws InterruptedException {
+public static void main(String[] args) throws InterruptedException {
         {
             banner = new ArrayList<>();
             title = new ArrayList<>();
@@ -82,16 +82,9 @@ public class App {
         System.out.print("Enter Name to Begin\n>>");
         user_input = get_user_input.nextLine();
 
-
         Player player = players.findPlayer(user_input);
 
-
-
         System.out.println("Welcome : " + user_input);
-
-
-
-
 
         Game game = new Game(players, player);
 
@@ -99,7 +92,5 @@ public class App {
         game.playGame();
 
         get_user_input.close();
-
     }
-
 }

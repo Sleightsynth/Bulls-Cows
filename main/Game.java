@@ -1,5 +1,6 @@
 package main;
 
+import java.io.*;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -34,19 +35,23 @@ public class Game {
     }
 
     public void playGame() {
-
         String user_input;
-
         do {
-            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n>>");
-
+            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n\t- Stats\n\t- Quit\n>>");
             user_input = getUserInput();
-
             if (user_input.equalsIgnoreCase("quit")) {
-                quit();
+                System.out.println("Thank-you for playing!");
+                exit(0);
+            }
+            if (user_input.equalsIgnoreCase("stats")) {
+                System.out.println(currentPlayer.toString());
+                continue;
             }
 
             requestCode(user_input);
+
+            if(this.currentCode.getSecretCode() == null || this.currentCode.getSecretCode().equals("0"))
+                continue;
 
             do {
                 System.out.print("Please make a guess\n>>");
@@ -67,22 +72,17 @@ public class Game {
                 if (undoGuess(user_input))
                     continue;
 
-                //TODO: CHECK BULLS AND COWS
-
                 if (checkGuess(this.guess)) {
                     System.out.println("You are correct");
-                    System.out.println();
                 } else {
-                    //TODO: Display cows and bulls
-                    System.out.printf("Bulls -> %d%nCows -> %d%n", this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows());
-                    System.out.println("You are wrong\nPlease try again");
+                    System.out.printf(
+                            "Bulls -> %d%nCows -> %d%n",
+                            this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows()
+                    );
+                    System.out.println("You are wrong\nPlease try again or you can save the code for later (later)");
                 }
-
-
             } while (!this.currentCode.isDecipheredCode());
-
         } while (true);
-
     }
 
     public void requestCode(String user_input) {
@@ -90,12 +90,14 @@ public class Game {
         while(!accept_input){
             if (user_input.equalsIgnoreCase("letter")) {
                 this.currentCode = new LetterCode();
+                this.currentCode.getCode();
+                this.currentPlayer.incrementCodesAttempted();
                 accept_input = true;
             }
             else if (user_input.equalsIgnoreCase("number")) {
-                NumbersCode numberCode = new NumbersCode();
-                numberCode.getCode();
-                this.currentCode = numberCode;
+                this.currentCode = new NumbersCode();
+                this.currentCode.getCode();
+                this.currentPlayer.incrementCodesAttempted();
                 accept_input = true;
             }else{
                 System.out.println("Please enter:\n- Letter\t- Number");
@@ -105,6 +107,23 @@ public class Game {
     }
 
     public boolean enterGuess(String user_input) {
+        if(user_input.equalsIgnoreCase("later")) {
+            try {
+                String username = this.currentPlayer.getUsername();
+                File file = new File("Data\\" + username + ".txt");
+                FileWriter write = new FileWriter("Data\\" + username + ".txt");
+                String code = currentCode.toString();
+                write.write(code);
+                write.close();
+            } catch(IOException e) {
+                System.out.println("Could not write to file.");
+            }
+
+            System.out.println("Secret code saved for later.");
+            System.out.println("Thank-you for playing!");
+            exit(0);
+        }
+        String pattern = "^[a-zA-Z]*$";
         if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
                 Integer.parseInt(user_input);
@@ -112,15 +131,20 @@ public class Game {
                 System.out.println("Only numbers can be entered!\nTry Again\n");
                 return false;
             }
-        } else {
-            String pattern = "^[a-zA-Z]*$";
-            if (!user_input.matches(pattern))
+        } else if (!user_input.matches(pattern)) {
+                System.out.println("Only letters can be entered!\n Try Again\n");
                 return false;
         }
 
-        if (user_input.equalsIgnoreCase("quit")) {
-            quit();
-        } else if (user_input.toCharArray().length != 4) {
+        if (user_input.equalsIgnoreCase("solution")) {
+            System.out.println(showSolution());
+            return false;
+        } else if (user_input.equalsIgnoreCase("quit")) {
+            System.out.println("Thank-you for playing!");
+            exit(0);
+        }
+
+        else if (user_input.toCharArray().length != 4) {
             System.out.println("Please enter 4 characters");
             return false;
         }
@@ -130,7 +154,6 @@ public class Game {
     }
 
     public boolean checkGuess(String user_input) {
-
         if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
             this.currentCode.setDecipheredCode(true);
             this.currentPlayer.incrementCodesDeciphered();
@@ -141,15 +164,13 @@ public class Game {
             char[] code_arr = this.currentCode.toString().toCharArray();
             int numberOfBulls = 0;
             int numberOfCows = 0;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
                     if (guess_arr[i] == code_arr[j])
                         if (i == j)
                             ++numberOfBulls;
                         else
                             ++numberOfCows;
-                }
-            }
             this.currentPlayer.setNumberOfCows(numberOfCows);
             this.currentPlayer.setNumberOfBulls(numberOfBulls);
         }
@@ -176,17 +197,8 @@ public class Game {
     public void loadGame() {
 
     }
-
-    public void showSolution() {
-        return;
-    }
-
-    public void loadPlayer(String username){
-
-    }
-
-    public void savePlayer(){
-
+    public SecretCode showSolution() {
+        return this.currentCode;
     }
 
     public String getGuess() {
@@ -204,7 +216,6 @@ public class Game {
     public void setCurrentCode(SecretCode currentCode) {
         this.currentCode = currentCode;
     }
-
     public void quit(){
         System.out.println("Thank-you for playing!");
         playerGameMapping.savePlayers();

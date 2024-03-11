@@ -1,13 +1,16 @@
 package main;
 
 public class SecretCode {
+    private boolean decipheredCode;
 
     private String secretCode;
 
-    private boolean decipheredCode;
-
     public SecretCode(){
         this.decipheredCode = false;
+    }
+
+    public String getSecretCode() {
+        return secretCode;
     }
 
     public void setDecipheredCode(boolean deciphered)
@@ -20,6 +23,5 @@ public class SecretCode {
     }
 
     public void getCode(){
-
     }
 }

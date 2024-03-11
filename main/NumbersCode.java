@@ -25,19 +25,17 @@ public class NumbersCode extends SecretCode{
                 do {
                     nextDigit = random.nextInt(10);
                 } while (usedDigits.contains(nextDigit));
-
                 usedDigits.add(nextDigit);
                 codeArray[i] = nextDigit;
             }
-
             this.secretCode = codeArray[0] * 1000 + codeArray[1] * 100 + codeArray[2] * 10 + codeArray[3];
         } while (this.secretCode < 1000);
     }
 
-    public int getSecretCode() {
+    public String getSecretCode() {
         if(this.secretCode == 0)
             this.getCode();
-        return this.secretCode;
+        return String.valueOf(this.secretCode);
     }
 
     public void setSecretCode(int secretCode) {

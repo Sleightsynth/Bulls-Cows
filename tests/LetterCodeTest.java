@@ -11,25 +11,23 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NumberCodeTest {
+public class LetterCodeTest {
 
     SecretCode code;
 
     @BeforeEach
-    public void setUp(){
-        this.code = new NumbersCode();
-    }
+    public void setUp(){this.code = new LetterCode();}
 
     @Test
     public void testConstruct(){
-        assertEquals(NumbersCode.class, code.getClass());
-        assertNotEquals(LetterCode.class, code.getClass());
+        assertEquals(LetterCode.class, code.getClass());
+        assertNotEquals(NumbersCode.class, code.getClass());
         assertNotEquals(SecretCode.class, code.getClass());
     }
 
     @Test
-    public void testGetSecretNumberCode(){
-        assertNotEquals(0, Integer.parseInt(code.getSecretCode()));
+    public void testGetSecretLetterCode(){
+        assertNotEquals(null, code.getSecretCode());
     }
 
     @Test
