@@ -22,7 +22,7 @@ Scenario: Player requests letters secret code
 Scenario: Player requests numbers secret code
 - [x] Given the player has opened the program
 - [x] When the player requests a secret code
-- [x] Then a secret code is generated representing a sequence of unique numbers and number of secret code attempts is updated. 
+- [x] Then a secret code is generated representing a sequence of unique numbers and number of secret code attempts is updated.
 
 Scenario: Player requests a letters secret code but no phrases file exists - Andy
 - [ ] Given there are no words stored
@@ -32,28 +32,28 @@ Scenario: Player requests a letters secret code but no phrases file exists - And
 2. As a player I want to be able to enter a guess so I can decipher the secret code.
 
 Scenario: player enters a guess ANDY
-- [ ] Given a secret code is displayed 
-- [ ] When the player enters a guess 
-- [ ] Then the number of bulls and cows are displayed and the player stats are updated 
+- [ ] Given a secret code is displayed
+- [ ] When the player enters a guess
+- [ ] Then the number of bulls and cows are displayed and the player stats are updated
 
 Scenario: player enters the correct guess and successfully deciphers the code- ANDY
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters the correct guess 
+- [ ] Given a secret code is displayed
+- [ ] When the player enters the correct guess
 - [ ] Then a success message is displayed, their stats are updated and the game is finished
 
 Scenario: player enters a guess with an invalid length - ANDY
-- [x] Given a secret code is displayed  
-- [x] When the player enters a guess with an invalid length 
+- [x] Given a secret code is displayed
+- [x] When the player enters a guess with an invalid length
 - [x] Then an error message is displayed and they are asked to try again
 
-Scenario: player enters an invalid guess for a letters code - ANDY 
-- [ ] Given a secret code is displayed  
-- [ ] When the player enters a guess containing numbers 
-- [ ] Then an error message is displayed and they are asked to try again 
+Scenario: player enters an invalid guess for a letters code - ANDY
+- [ ] Given a secret code is displayed
+- [ ] When the player enters a guess containing numbers
+- [ ] Then an error message is displayed and they are asked to try again
 
 Scenario: player enters an invalid guess for a numbers code - JAMES
-- [x] Given a secret code is displayed  
-- [x] When the player enters a guess containing letters 
+- [x] Given a secret code is displayed
+- [x] When the player enters a guess containing letters
 - [x] Then an error message is displayed and they are asked to try again
 
 3. As a player I want to be able to undo a letter/number so I can try to decipher the secret code.
@@ -73,3 +73,30 @@ Scenario: player wants to undo an invalid letter/number in the guess
 - [ ] When a player selects an invalid letter/number to replace
 - [ ] Then an error message is displayed and they are asked to try again
 
+## Sprint Two
+
+4. As a player I want to be able to save a secret code so I can try to decipher it at another time - Stuart
+
+
+5. As a player I want to be able to load a secret code so I can continue trying to decipher a saved secret code - Stuart
+
+
+7. As a player I want to store my player name so the software can track my game play statistics - Shaun, Andy
+
+
+8. As a player I want the software to track the number of secret codes I have successfully deciphered - Sean
+
+
+9. As a player I want the software to track the number of secret codes I have attempted to decipher so I can see how many I’ve attempted - Sean
+
+
+10. As a player I want the software to track the number of bulls and cows I have guessed so I can see how accurate I am as a percentage of my total number of guesses - Shaun, Andy
+
+
+11. As a player I want to display my game play statistics so I can see my performance - Shaun, Andy
+
+
+12. As a player I want to load my details so I can track my game play statistics - James
+
+
+NOTE - for the purpose of marking, store my player name and tracking the secret codes deciphered, attempted and correct guesses will be counted as a single user story

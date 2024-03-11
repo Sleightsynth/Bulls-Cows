@@ -95,7 +95,6 @@ public class Game {
                 user_input = getUserInput();
             }
         }
-        System.out.println(this.currentCode);
     }
 
     public boolean enterGuess(String user_input) {
@@ -112,7 +111,10 @@ public class Game {
                 return false;
         }
 
-        if (user_input.equalsIgnoreCase("quit")) {
+        if (user_input.equalsIgnoreCase("solution")) {
+            System.out.println(showSolution());
+            return false;
+        } else if (user_input.equalsIgnoreCase("quit")) {
             System.out.println("Thank-you for playing!");
             exit(0);
         } else if (user_input.toCharArray().length != 4) {
@@ -169,8 +171,8 @@ public class Game {
 
     }
 
-    public void showSolution() {
-        return;
+    public SecretCode showSolution() {
+        return this.currentCode;
     }
 
 
