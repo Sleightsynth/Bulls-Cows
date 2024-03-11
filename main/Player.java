@@ -1,7 +1,7 @@
 package main;
 
 public class Player {
-    
+
     // ATTRIBUTES
     // ----------
 
@@ -82,6 +82,13 @@ public class Player {
     ++this.codesAttempted;
     }
 
+    @Override
+    public String toString(){
+        return "Percentage correct code : " + getPercent() + "%";
+    }
 
+    private int getPercent() {
+        return (getCodesDeciphered()/getCodesAttempted()) * 100;
+    }
 
 }

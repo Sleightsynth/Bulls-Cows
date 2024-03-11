@@ -36,11 +36,15 @@ public class Game {
     public void playGame() {
         String user_input;
         do {
-            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n>>");
+            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n\t- Stats\n\t- Quit\n>>");
             user_input = getUserInput();
             if (user_input.equalsIgnoreCase("quit")) {
                 System.out.println("Thank-you for playing!");
                 exit(0);
+            }
+            if (user_input.equalsIgnoreCase("stats")) {
+                System.out.println(currentPlayer.toString());
+                continue;
             }
 
             requestCode(user_input);
