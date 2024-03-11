@@ -18,10 +18,6 @@ public class Players {
             FileInputStream fileStream = new FileInputStream(playerFile);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
             this.players = (ArrayList<Player>) objectStream.readObject();
-            for(Player player : this.players) {
-                System.out.println(player.getUsername());
-                System.out.println(player.getCodesDeciphered());
-            }
             fileStream.close();
             objectStream.close();
         } catch (FileNotFoundException e){
@@ -33,10 +29,6 @@ public class Players {
     }
 
     public void savePlayers(){
-        for(Player player : this.players) {
-            System.out.println(player.getUsername());
-            System.out.println(player.getCodesDeciphered());
-        }
         try{
             FileOutputStream fileStream = new FileOutputStream(playerFile);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
@@ -51,7 +43,7 @@ public class Players {
     public Player findPlayer(String playerName)
     {
         for (Player p : getPlayers())
-            if(p.getUsername().equals(playerName))
+            if(p.getUsername().equalsIgnoreCase(playerName))
                 return p;
         Player player = new Player(playerName);
         addPlayer(player);
