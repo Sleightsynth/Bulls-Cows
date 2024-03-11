@@ -1,15 +1,19 @@
 package main;
 
-public class Player {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Player implements Serializable {
 
     // ATTRIBUTES
     // ----------
-
+    @Serial
+    private static final long serialVersionUID = 645214280240932938L;
     private String username;
     
     private int numberOfBulls, numberOfCows, codesAttempted, codesDeciphered;
 
-    // CONSTRUCTERS
+    // CONSTRUCTORS
     // ------------
     
     public Player(){}

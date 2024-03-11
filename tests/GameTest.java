@@ -1,15 +1,13 @@
 package tests;
 
-import main.Game;
-import main.LetterCode;
-import main.NumbersCode;
-import main.Player;
+import main.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +19,7 @@ class GameTest {
     @BeforeEach
     void setUp() {
         this.player = new Player("John", 2, 2, 5, 3);
-        this.game = new Game(this.player, this.player);
+        this.game = new Game(new Players(), this.player);
     }
 
     @AfterEach

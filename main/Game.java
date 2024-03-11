@@ -6,18 +6,19 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Game {
-    private Player playerGameMapping;
+    private Players playerGameMapping;
     private Player currentPlayer;
     private SecretCode currentCode;
     private String guess;
 
-    public Game(Player playerGameMapping, Player currentPlayer) {
+    public Game(Players playerGameMapping, Player currentPlayer, String codeType) {
         this.playerGameMapping = playerGameMapping;
         this.currentPlayer = currentPlayer;
     }
 
-    public Game(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
+    public Game(Players playerGameMapping, Player currentPlayer) {
+        this.playerGameMapping = playerGameMapping;
+                this.currentPlayer = currentPlayer;
     }
 
     public void getHint() {
@@ -56,6 +57,10 @@ public class Game {
                 System.out.print("Please make a guess\n>>");
 
                 user_input = getUserInput();
+
+                if (user_input.equalsIgnoreCase("quit")) {
+                    quit();
+                }
 
                 if (!enterGuess(user_input))
                     continue;
@@ -192,11 +197,9 @@ public class Game {
     public void loadGame() {
 
     }
-
     public SecretCode showSolution() {
         return this.currentCode;
     }
-
 
     public String getGuess() {
         return guess;
@@ -212,5 +215,10 @@ public class Game {
 
     public void setCurrentCode(SecretCode currentCode) {
         this.currentCode = currentCode;
+    }
+    public void quit(){
+        System.out.println("Thank-you for playing!");
+        playerGameMapping.savePlayers();
+        exit(0);
     }
 }

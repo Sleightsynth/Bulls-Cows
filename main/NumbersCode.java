@@ -15,9 +15,11 @@ public class NumbersCode extends SecretCode{
     @Override
     public void getCode() {
         Random random = new Random();
+
         do {
             Set<Integer> usedDigits = new HashSet<>();
             int[] codeArray = new int[4];
+
             for (int i = 0; i < codeArray.length; i++) {
                 int nextDigit;
                 do {
@@ -30,7 +32,6 @@ public class NumbersCode extends SecretCode{
         } while (this.secretCode < 1000);
     }
 
-    @Override
     public String getSecretCode() {
         if(this.secretCode == 0)
             this.getCode();
