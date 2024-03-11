@@ -74,18 +74,27 @@ public class App {
             TimeUnit.SECONDS.sleep(2);
             System.out.println("\n\n");
 
+        Players players = new Players();
 
         Scanner get_user_input = new Scanner(System.in);
         String user_input;
+
         System.out.print("Enter Name to Begin\n>>");
         user_input = get_user_input.nextLine();
+
+
+        Player player = players.findPlayer(user_input);
+
+
+
         System.out.println("Welcome : " + user_input);
 
-        Players players = new Players();
 
-        Player player = new Player(user_input);
 
-        Game game = new Game(players.findPlayer(player));
+
+
+        Game game = new Game(players, player);
+
 
         game.playGame();
 

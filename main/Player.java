@@ -1,6 +1,8 @@
 package main;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     
     // ATTRIBUTES
     // ----------
@@ -9,7 +11,7 @@ public class Player {
     
     private int numberOfBulls, numberOfCows, codesAttempted, codesDeciphered;
 
-    // CONSTRUCTERS
+    // CONSTRUCTORS
     // ------------
     
     public Player(){}
