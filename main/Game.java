@@ -82,12 +82,13 @@ public class Game {
             if (user_input.equalsIgnoreCase("letter")) {
                 this.currentCode = new LetterCode();
                 this.currentCode.getCode();
+                this.currentPlayer.incrementCodesAttempted();
                 accept_input = true;
             }
             else if (user_input.equalsIgnoreCase("number")) {
                 this.currentCode = new NumbersCode();
                 this.currentCode.getCode();
-
+                this.currentPlayer.incrementCodesAttempted();
                 accept_input = true;
             }else{
                 System.out.println("Please enter:\n- Letter\t- Number");
