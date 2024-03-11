@@ -70,7 +70,7 @@ public class Game {
                             "Bulls -> %d%nCows -> %d%n",
                             this.currentPlayer.getNumberOfBulls(), this.currentPlayer.getNumberOfCows()
                     );
-                    System.out.println("You are wrong\nPlease try again");
+                    System.out.println("You are wrong\nPlease try again or you can save the code for later (later)");
                 }
             } while (!this.currentCode.isDecipheredCode());
         } while (true);
