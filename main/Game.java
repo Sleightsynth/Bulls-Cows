@@ -1,5 +1,6 @@
 package main;
 
+import java.io.*;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -37,7 +38,6 @@ public class Game {
         do {
             System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n>>");
             user_input = getUserInput();
-
             if (user_input.equalsIgnoreCase("quit")) {
                 System.out.println("Thank-you for playing!");
                 exit(0);
@@ -98,6 +98,22 @@ public class Game {
     }
 
     public boolean enterGuess(String user_input) {
+        if(user_input.equalsIgnoreCase("later")) {
+            try {
+                String username = this.currentPlayer.getUsername();
+                File file = new File("Data\\" + username + ".txt");
+                FileWriter write = new FileWriter("Data\\" + username + ".txt");
+                String code = currentCode.toString();
+                write.write(code);
+                write.close();
+            } catch(IOException e) {
+                System.out.println("Could not write to file.");
+            }
+
+            System.out.println("Secret code saved for later.");
+            System.out.println("Thank-you for playing!");
+            exit(0);
+        }
         String pattern = "^[a-zA-Z]*$";
         if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
@@ -117,7 +133,9 @@ public class Game {
         } else if (user_input.equalsIgnoreCase("quit")) {
             System.out.println("Thank-you for playing!");
             exit(0);
-        } else if (user_input.toCharArray().length != 4) {
+        }
+
+        else if (user_input.toCharArray().length != 4) {
             System.out.println("Please enter 4 characters");
             return false;
         }
