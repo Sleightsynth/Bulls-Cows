@@ -9,8 +9,17 @@ public class SecretCode {
         this.decipheredCode = false;
     }
 
+    public SecretCode(String secretCode) {
+        this.decipheredCode = false;
+        this.secretCode = secretCode;
+    }
+
     public String getSecretCode() {
         return secretCode;
+    }
+
+    public void setSecretCode(String secretCode) {
+        this.secretCode = secretCode;
     }
 
     public void setDecipheredCode(boolean deciphered)
@@ -23,5 +32,10 @@ public class SecretCode {
     }
 
     public void getCode(){
+    }
+
+    @Override
+    public String toString() {
+        return this.secretCode;
     }
 }

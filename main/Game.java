@@ -11,9 +11,10 @@ public class Game {
     private SecretCode currentCode;
     private String guess;
 
-    public Game(Players playerGameMapping, Player currentPlayer, String codeType) {
+    public Game(Players playerGameMapping, Player currentPlayer, SecretCode currentCode) {
         this.playerGameMapping = playerGameMapping;
         this.currentPlayer = currentPlayer;
+        this.currentCode = currentCode;
     }
 
     public Game(Players playerGameMapping, Player currentPlayer) {

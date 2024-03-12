@@ -16,10 +16,12 @@ class GameTest {
     private Player player;
     private Game game;
 
+
     @BeforeEach
     void setUp() {
         this.player = new Player("John", 2, 2, 5, 3);
-        this.game = new Game(new Players(), this.player);
+        this.game = new Game(new Players(), this.player, new SecretCode("test"));
+
     }
 
     @AfterEach
@@ -176,12 +178,12 @@ class GameTest {
 //    }
 
     @Test
-    public void loadPlayerTest(){
+    public void loadPlayerTest() {
         assertEquals(this.player, game.loadPlayer());
     }
 
     @Test
-    public void requestCodeTest(){
+    public void requestCodeTest() {
         this.game.requestCode("letter");
         assertEquals(LetterCode.class, this.game.getCurrentCode().getClass());
         this.game.requestCode("number");
@@ -189,7 +191,7 @@ class GameTest {
     }
 
     @Test
-    public void makeNumberGuessTest(){
+    public void makeNumberGuessTest() {
         game.requestCode("number");
         assertFalse(game.enterGuess("12d3"));
         assertFalse(game.enterGuess("123"));
@@ -199,7 +201,7 @@ class GameTest {
     }
 
     @Test
-    public void makeLetterGuessTest(){
+    public void makeLetterGuessTest() {
         game.setCurrentCode(new LetterCode());
         assertFalse(game.enterGuess("12d3"));
         assertFalse(game.enterGuess("asdfg"));
@@ -209,7 +211,7 @@ class GameTest {
     }
 
     @Test
-    public void undoGuessTest(){
+    public void undoGuessTest() {
         game.setGuess("1234");
         assertEquals("1234", game.getGuess());
         game.undoGuess("y");
@@ -219,35 +221,39 @@ class GameTest {
     }
 
     @Test
-    public void checkGuessTest(){
+    public void checkGuessTest() {
 
     }
 
     @Test
-    public void requestLetterCode(){
+    public void requestLetterCode() {
         game.requestCode("letter");
         assertEquals(LetterCode.class, game.getCurrentCode().getClass());
     }
 
     @Test
-    public void requestNumbersCode(){
+    public void requestNumbersCode() {
         game.requestCode("number");
         assertEquals(NumbersCode.class, game.getCurrentCode().getClass());
     }
 
     @Test
-    public void incrementLetterCode(){
+    public void incrementLetterCode() {
         assertEquals(5, player.getCodesAttempted());
         game.requestCode("letter");
         assertEquals(6, player.getCodesAttempted());
     }
 
     @Test
-    public void incrementNumberCode(){
+    public void incrementNumberCode() {
         assertEquals(5, player.getCodesAttempted());
         game.requestCode("number");
         assertEquals(6, player.getCodesAttempted());
     }
-
-
+    @Test
+    public void incrementDecipheredCode() {
+        assertEquals(3, player.getCodesDeciphered());
+        game.checkGuess("test");
+        assertEquals(4, player.getCodesDeciphered());
+    }
 }
