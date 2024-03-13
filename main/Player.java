@@ -6,18 +6,22 @@ public class Player {
     // ----------
 
     private String username;
-    
+
     private int numberOfBulls, numberOfCows, codesAttempted, codesDeciphered;
 
     // CONSTRUCTERS
     // ------------
-    
-    public Player(){}
-    public Player(String username){this.username=username;}
+
+    public Player() {
+    }
+
+    public Player(String username) {
+        this.username = username;
+    }
 
     public Player(
-        String username, int numberOfBulls, int numberOfCows, int codesAttempted, int codesDeciphered
-    ){
+            String username, int numberOfBulls, int numberOfCows, int codesAttempted, int codesDeciphered
+    ) {
         this.username = username;
         this.numberOfBulls = numberOfBulls;
         this.numberOfCows = numberOfCows;
@@ -35,15 +39,15 @@ public class Player {
     public int getNumberOfBulls() {
         return numberOfBulls;
     }
-    
+
     public int getNumberOfCows() {
         return numberOfCows;
     }
-    
+
     public int getCodesDeciphered() {
         return codesDeciphered;
     }
-    
+
     public int getCodesAttempted() {
         return codesAttempted;
     }
@@ -62,7 +66,7 @@ public class Player {
     public void setNumberOfCows(int numberOfCows) {
         this.numberOfCows = numberOfCows;
     }
-    
+
     public void setCodesDeciphered(int codesDeciphered) {
         this.codesDeciphered = codesDeciphered;
     }
@@ -74,21 +78,24 @@ public class Player {
     // METHODS
     // -------
 
-    public void incrementCodesDeciphered(){
+    public void incrementCodesDeciphered() {
         ++this.codesDeciphered;
     }
 
-    public void incrementCodesAttempted(){
-    ++this.codesAttempted;
+    public void incrementCodesAttempted() {
+        ++this.codesAttempted;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Percentage correct code : " + getPercent() + "%";
     }
 
     private int getPercent() {
-        return (getCodesDeciphered()/getCodesAttempted()) * 100;
+        if (getCodesAttempted() == 0) {
+            return 0;
+        } else {
+            return (getCodesDeciphered() / getCodesAttempted()) * 100;
+        }
     }
-
 }

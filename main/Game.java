@@ -36,18 +36,22 @@ public class Game {
     public void playGame() {
         String user_input;
         do {
-            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n\t- Stats\n\t- Quit\n>>");
+            System.out.print("\nWhat type of Code do you want\n\t- Letter\n\t- Number\n\t- Stats\n\t- Quit\n\t- Load\n>>");
             user_input = getUserInput();
             if (user_input.equalsIgnoreCase("quit")) {
                 System.out.println("Thank-you for playing!");
                 exit(0);
             }
-            if (user_input.equalsIgnoreCase("stats")) {
+            else if (user_input.equalsIgnoreCase("stats")) {
                 System.out.println(currentPlayer.toString());
                 continue;
             }
-
-            requestCode(user_input);
+            else if(user_input.equalsIgnoreCase("load")) {
+                loadGame();
+            }
+            else {
+                requestCode(user_input);
+            }
 
             if(this.currentCode.getSecretCode() == null || this.currentCode.getSecretCode().equals("0"))
                 continue;
@@ -103,20 +107,7 @@ public class Game {
 
     public boolean enterGuess(String user_input) {
         if(user_input.equalsIgnoreCase("later")) {
-            try {
-                String username = this.currentPlayer.getUsername();
-                File file = new File("Data\\" + username + ".txt");
-                FileWriter write = new FileWriter("Data\\" + username + ".txt");
-                String code = currentCode.toString();
-                write.write(code);
-                write.close();
-            } catch(IOException e) {
-                System.out.println("Could not write to file.");
-            }
-
-            System.out.println("Secret code saved for later.");
-            System.out.println("Thank-you for playing!");
-            exit(0);
+            saveGame();
         }
         String pattern = "^[a-zA-Z]*$";
         if (this.currentCode.getClass().equals(NumbersCode.class)) {
@@ -186,11 +177,52 @@ public class Game {
     }
 
     public void saveGame() {
+        try {
+            String username = this.currentPlayer.getUsername();
+            File file = new File("Data\\" + username + ".txt");
+            FileWriter write = new FileWriter("Data\\" + username + ".txt");
+            String code = currentCode.toString();
+            write.write(code);
+            write.close();
+        } catch(IOException e) {
+            System.out.println("Could not write to file.");
+        }
 
+        System.out.println("Secret code saved for later.");
+        System.out.println("Thank-you for playing!");
+        exit(0);
     }
 
     public void loadGame() {
+        try {
+            String username = this.currentPlayer.getUsername();
+            File file = new File("Data\\" + username + ".txt");
+            if(file.exists()) {
+                FileReader reader = new FileReader(file);
+                SecretCode secretCode;
 
+                try (Scanner scanner = new Scanner(file)) {
+                    scanner.hasNext();
+                    String code = scanner.next();
+                    if (code.length() == 4) {
+                        try {
+                            Integer.parseInt(code);
+                            secretCode = new NumbersCode(code);
+                        } catch (NumberFormatException e) {
+                            secretCode = new LetterCode(code);
+                        }
+                        this.currentCode = secretCode;
+                        System.out.println("Game loaded successfully!");
+                    } else {
+                        System.out.println("Invalid code length in the file.");
+                    }
+                }
+            } else {
+                System.out.println("Save file not found for user: " + username);
+            }
+        } catch (FileNotFoundException e){
+            System.err.println("File not found.");
+        }
     }
 
     public SecretCode showSolution() {
