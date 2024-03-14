@@ -109,6 +109,13 @@ public class Game {
         if(user_input.equalsIgnoreCase("later")) {
             saveGame();
         }
+        if (user_input.equalsIgnoreCase("solution")) {
+            System.out.println(showSolution());
+            return false;
+        } else if (user_input.equalsIgnoreCase("quit")) {
+            System.out.println("Thank-you for playing!");
+            exit(0);
+        }
         String pattern = "^[a-zA-Z]*$";
         if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
@@ -120,14 +127,6 @@ public class Game {
         } else if (!user_input.matches(pattern)) {
                 System.out.println("Only letters can be entered!\n Try Again\n");
                 return false;
-        }
-
-        if (user_input.equalsIgnoreCase("solution")) {
-            System.out.println(showSolution());
-            return false;
-        } else if (user_input.equalsIgnoreCase("quit")) {
-            System.out.println("Thank-you for playing!");
-            exit(0);
         }
 
         else if (user_input.toCharArray().length != 4) {
