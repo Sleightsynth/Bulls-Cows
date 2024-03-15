@@ -6,13 +6,17 @@ import java.util.Set;
 
 public class NumbersCode extends SecretCode{
 
-
     private int secretCode;
 
     public NumbersCode() {
     }
 
     public NumbersCode(String code) {
+        try{
+            this.secretCode = Integer.parseInt(code);
+        }catch(NumberFormatException e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
