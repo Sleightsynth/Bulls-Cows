@@ -117,21 +117,19 @@ public class Game {
             exit(0);
         }
         String pattern = "^[a-zA-Z]*$";
-        if (this.currentCode.getClass().equals(NumbersCode.class)) {
+        if (user_input.toCharArray().length != 4) {
+            System.out.println("Please enter 4 characters");
+            return false;
+        } else if (!user_input.matches(pattern)) {
+                System.out.println("Only letters can be entered!\n Try Again\n");
+                return false;
+        } else if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
                 Integer.parseInt(user_input);
             } catch (NumberFormatException e) {
                 System.out.println("Only numbers can be entered!\nTry Again\n");
                 return false;
             }
-        } else if (!user_input.matches(pattern)) {
-                System.out.println("Only letters can be entered!\n Try Again\n");
-                return false;
-        }
-
-        else if (user_input.toCharArray().length != 4) {
-            System.out.println("Please enter 4 characters");
-            return false;
         }
 
         this.guess = user_input;
