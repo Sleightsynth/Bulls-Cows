@@ -12,11 +12,8 @@ public class NumbersCode extends SecretCode{
     }
 
     public NumbersCode(String code) {
-        try{
-            this.secretCode = Integer.parseInt(code);
-        }catch(NumberFormatException e){
-            throw new RuntimeException(e);
-        }
+        int intCode = Integer.parseInt(code);
+        setSecretCode(intCode);
     }
 
     @Override
