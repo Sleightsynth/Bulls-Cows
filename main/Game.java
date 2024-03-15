@@ -46,11 +46,6 @@ public class Game {
         return currentPlayer;
     }
 
-
-
-
-
-
     public String getUserInput() {
         Scanner get_user_input = new Scanner(System.in);
         return get_user_input.nextLine();
