@@ -276,7 +276,33 @@ public class Game {
     }
 
     public void loadGame() {
-
+        try {
+            String username = this.currentPlayer.getUsername();
+            File file = new File("Data\\" + username + ".txt");
+            if(file.exists()) {
+                SecretCode secretCode;
+                try (Scanner scanner = new Scanner(file)) {
+//                    scanner.hasNext();
+                    String code = scanner.next();
+                    if (code.length() == 4) {
+                        try {
+                            Integer.parseInt(code);
+                            secretCode = new NumbersCode(code);
+                        } catch (NumberFormatException e) {
+                            secretCode = new LetterCode(code);
+                        }
+                        this.currentCode = secretCode;
+                        System.out.println("Game loaded successfully!");
+                    } else {
+                        System.out.println("Invalid code length in the file.");
+                    }
+                }
+            } else {
+                System.out.println("Save file not found for user: " + username);
+            }
+        } catch (FileNotFoundException e){
+            System.err.println("File not found.");
+        }
     }
 
     public void quit(){

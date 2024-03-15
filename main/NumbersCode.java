@@ -6,10 +6,14 @@ import java.util.Set;
 
 public class NumbersCode extends SecretCode{
 
-
     private int secretCode;
 
     public NumbersCode() {
+    }
+
+    public NumbersCode(String code) {
+        int intCode = Integer.parseInt(code);
+        setSecretCode(intCode);
     }
 
     @Override

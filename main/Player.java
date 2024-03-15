@@ -10,18 +10,22 @@ public class Player implements Serializable {
     @Serial
     private static final long serialVersionUID = 645214280240932938L;
     private String username;
-    
+
     private int numberOfBulls, numberOfCows, codesAttempted, codesDeciphered;
 
     // CONSTRUCTORS
     // ------------
-    
-    public Player(){}
-    public Player(String username){this.username=username;}
+
+    public Player() {
+    }
+
+    public Player(String username) {
+        this.username = username;
+    }
 
     public Player(
-        String username, int numberOfBulls, int numberOfCows, int codesAttempted, int codesDeciphered
-    ){
+            String username, int numberOfBulls, int numberOfCows, int codesAttempted, int codesDeciphered
+    ) {
         this.username = username;
         this.numberOfBulls = numberOfBulls;
         this.numberOfCows = numberOfCows;

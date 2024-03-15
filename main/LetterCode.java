@@ -18,6 +18,12 @@ public class LetterCode extends SecretCode{
         loadWords();
     }
 
+    public LetterCode(String code) {
+        Words = new ArrayList<>();
+        loadWords();
+        this.secretCode = code;
+    }
+
     public void loadWords() {
         try {
             File file = new File("Data/LetterCode.txt");
