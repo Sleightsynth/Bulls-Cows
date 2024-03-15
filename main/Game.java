@@ -71,12 +71,11 @@ public class Game {
                 requestCode(user_input);
             else if (user_input.equalsIgnoreCase("stats"))
             {
-                System.out.println(currentPlayer.toString());
+                System.out.println(currentPlayer.getStats());
                 continue;
             }
             else if (user_input.equalsIgnoreCase("load"))
             {
-                // TODO :  enable loading a saved code;
                 loadGame();
             }
             else if (user_input.equalsIgnoreCase("quit"))
@@ -107,6 +106,11 @@ public class Game {
                 else if (user_input.equalsIgnoreCase("quit"))
                 {
                     this.setCurrentCode(null);
+                    break;
+                }
+                else if(user_input.equalsIgnoreCase("later"))
+                {
+                    saveGame();
                     break;
                 }
 
@@ -176,10 +180,6 @@ public class Game {
             return false;
         } else if (user_input.equalsIgnoreCase("quit")) {
             quit();
-            return false;
-        }
-        else if(user_input.equalsIgnoreCase("later")) {
-            saveGame();
             return false;
         }
         else if(user_input.equalsIgnoreCase("hint")){

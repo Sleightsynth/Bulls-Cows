@@ -92,11 +92,23 @@ public class Player implements Serializable {
 
     @Override
     public String toString(){
-        return "Percentage correct code : " + getPercent() + "%";
+        return this.username;
     }
 
-    private int getPercent() {
-        return (getCodesDeciphered()/getCodesAttempted()) * 100;
+    private double getPercent() {
+
+        return ((double) this.codesDeciphered / this.codesAttempted)*100;
+    }
+
+    public String getStats(){
+        return String.format(
+                """
+                Number of Codes Attempted   :   %s
+                Number of Codes Deciphered  :   %s
+                Percentage of Success       :   %.2f%%
+                    """,
+                this.codesAttempted, this.codesDeciphered, getPercent()
+        );
     }
 
 }
