@@ -13,6 +13,8 @@ public class NumbersCode extends SecretCode{
     }
 
     public NumbersCode(String code) {
+        int intCode = Integer.parseInt(code);
+        setSecretCode(intCode);
     }
 
     @Override
