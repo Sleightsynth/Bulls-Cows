@@ -60,20 +60,16 @@ public class Players {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players){
-        this.players = players;
-    }
+    //public void setPlayers(ArrayList<Player> players){this.players = players;}
 
-    public String getPlayerFile() {
-        return playerFile;
-    }
+    //public String getPlayerFile() {return playerFile;}
 
-    public void getAllPlayersBulls(){}
+    //public void getAllPlayersBulls(){}
 
-    public void getAllPlayersCows(){}
+    //public void getAllPlayersCows(){}
 
-    public void getAllPlayersSecretCodesAttempted(){}
+    //public void getAllPlayersSecretCodesAttempted(){}
 
-    public void getAllPlayersSecretCodesDeciphered(){}
+    //public void getAllPlayersSecretCodesDeciphered(){}
 
 }

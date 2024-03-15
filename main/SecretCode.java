@@ -18,9 +18,7 @@ public class SecretCode {
         return secretCode;
     }
 
-    public void setSecretCode(String secretCode) {
-        this.secretCode = secretCode;
-    }
+    //public void setSecretCode(String secretCode) {this.secretCode = secretCode;}
 
     public void setDecipheredCode(boolean deciphered)
     {

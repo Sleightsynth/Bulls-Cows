@@ -71,13 +71,9 @@ public class Player implements Serializable {
         this.numberOfCows = numberOfCows;
     }
     
-    public void setCodesDeciphered(int codesDeciphered) {
-        this.codesDeciphered = codesDeciphered;
-    }
+    //public void setCodesDeciphered(int codesDeciphered) {this.codesDeciphered = codesDeciphered;}
 
-    public void setCodesAttempted(int codesAttempted) {
-        this.codesAttempted = codesAttempted;
-    }
+    //public void setCodesAttempted(int codesAttempted) {this.codesAttempted = codesAttempted;}
 
     // METHODS
     // -------
