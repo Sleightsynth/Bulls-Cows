@@ -130,17 +130,15 @@ class GameTest {
     @Test
     public void testGetHint() {
         game.setCurrentCode(new LetterCode("abcd"));
-        game.getHint();
-        String hint = game.loadPlayer().getStats();
+        String hint = game.getHint();
         assertNotNull(hint);
         assertNotEquals("", hint);
-        System.out.println("Actual hint: " + hint);     //problem with the getStats
-        assertTrue(hint.matches("There is a '[a-z]' at position [1-4]"));
+        System.out.println("Actual hint: " + hint);
+        assertEquals(hint,"There is a [a-z] at position [1-4]");
     }
 
     @Test
     public void testQuit() {
-        // Create a mock Players object
         Players playerGameMapping = new Players();
         Player currentPlayer = new Player("TestPlayer");
         Game game = new Game(playerGameMapping, currentPlayer);

@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 public class Game {
     private Players playerGameMapping;
     private Player currentPlayer;
@@ -241,15 +239,17 @@ public class Game {
             }
     }
 
-    public void getHint() {
+    public String getHint() {
         Random getRandom = new Random();
         int randomIndex = getRandom.nextInt(4);
         char hintedChar = this.currentCode.getSecretCode().charAt(randomIndex);
-        System.out.printf("""
+        String hint = String.format("""
                 There is a %c at position %d
                 """,
                 hintedChar, randomIndex+1
         );
+        System.out.println(hint);
+        return hint;
     }
 
     public SecretCode showSolution() {

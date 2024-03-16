@@ -1,4 +1,5 @@
 package main.tests;
+import main.Game;
 import main.Player;
 import main.Players;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,5 +79,22 @@ public class PlayerTests {
     public void testToString() {
         Player player = new Player("TestPlayer");
         assertEquals("TestPlayer", player.toString());
+    }
+
+    @Test
+    public void testGetStats() {
+        Player currentPlayer = new Player("Alice", 2, 2, 5, 3);
+        Game game = new Game(new Players(), currentPlayer);
+        String stats = game.loadPlayer().getStats();
+        String expectedStats = String.format(
+                """
+                Number of Codes Attempted   :   %d
+                Number of Codes Deciphered  :   %d
+                Percentage of Success       :   %.2f%%
+                """,
+                currentPlayer.getCodesAttempted(), currentPlayer.getCodesDeciphered(), (double) currentPlayer.getCodesDeciphered() / currentPlayer.getCodesAttempted() * 100
+        );
+
+        assertEquals(expectedStats, stats);
     }
 }
