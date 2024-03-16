@@ -24,4 +24,10 @@ class SecretCodeTest {
     void isDecipheredCode() {
         assertFalse(this.secretCode.isDecipheredCode());
     }
+
+    @Test
+    public void testGetSecretCode() {
+        SecretCode secretCode = new SecretCode("abcd");
+        assertEquals("abcd", secretCode.getSecretCode());
+    }
 }

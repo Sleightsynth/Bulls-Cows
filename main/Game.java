@@ -305,4 +305,8 @@ public class Game {
         playerGameMapping.savePlayers();
         RUNNING = false;
     }
+
+    public boolean isRunning() {
+        return RUNNING;
+    }
 }

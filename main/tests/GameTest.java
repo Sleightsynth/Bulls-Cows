@@ -17,7 +17,6 @@ class GameTest {
     void setUp() {
         this.player = new Player("John", 2, 2, 5, 3);
         this.game = new Game(new Players(), this.player, new SecretCode("test"));
-
     }
 
     @AfterEach
@@ -135,7 +134,18 @@ class GameTest {
         String hint = game.loadPlayer().getStats();
         assertNotNull(hint);
         assertNotEquals("", hint);
+        System.out.println("Actual hint: " + hint);     //problem with the getStats
         assertTrue(hint.matches("There is a '[a-z]' at position [1-4]"));
+    }
+
+    @Test
+    public void testQuit() {
+        // Create a mock Players object
+        Players playerGameMapping = new Players();
+        Player currentPlayer = new Player("TestPlayer");
+        Game game = new Game(playerGameMapping, currentPlayer);
+        game.quit();
+        assertFalse(game.isRunning());
     }
 }
 
