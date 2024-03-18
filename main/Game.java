@@ -185,7 +185,8 @@ public class Game {
         }
         else if (this.currentCode.getClass().equals(NumbersCode.class)) {
             try {
-                Integer.parseInt(user_input);
+
+                Long.parseLong(user_input);
             } catch (NumberFormatException e) {
                 System.out.println("Only numbers can be entered!\nTry Again\n");
                 return false;

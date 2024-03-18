@@ -2,15 +2,22 @@ package main;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Hashtable;
 
 public class Players {
 
+    private  TopTenList topTen;
     private ArrayList<Player> players;
     private final String playerFile;
+
     public Players()
     {
         this.playerFile = "Data\\players.ser";
         loadPlayers();
+        extractTopTen();
+        return;
     }
 
     public void loadPlayers(){
@@ -58,6 +65,12 @@ public class Players {
 
     public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public void extractTopTen(){
+        this.topTen = new TopTenList(10);
+        for(Player player : this.players)
+            this.topTen.add(player);
     }
 
     //public void setPlayers(ArrayList<Player> players){this.players = players;}
