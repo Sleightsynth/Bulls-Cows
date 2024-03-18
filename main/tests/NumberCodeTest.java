@@ -36,7 +36,6 @@ public class NumberCodeTest {
     public void testSecretCodeValid(){
         for (int i = 0; i < 100; i++) {
             assertEquals(10, code.getSecretCode().length());
-            System.out.println("Print "+i+":"+code.getSecretCode());
             char[] code_char_arr = code.getSecretCode().toCharArray();
             Set<Character> setCheck = new HashSet<>();
             setCheck.add(code_char_arr[0]);

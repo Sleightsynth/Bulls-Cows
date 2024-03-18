@@ -133,12 +133,9 @@ class GameTest {
         String hint = game.getHint();
         assertNotNull(hint);
         assertNotEquals("", hint);
-<<<<<<< HEAD
         System.out.println("Actual hint: " + hint);
         assertTrue(hint.matches("^There is a [a-zA-Z] at position [1-9|10]\n$"));
-=======
         assertTrue((hint.matches("^There is a [a-zA-Z] at position [0-9]\\n$"))|(hint.matches("^There is a [a-zA-Z] at position 10\\n$")));
->>>>>>> 69b30746a91823dc4c428058f0e02846189e1feb
     }
 
     @Test
