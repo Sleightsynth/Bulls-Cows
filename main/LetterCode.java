@@ -30,7 +30,7 @@ public class LetterCode extends SecretCode{
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
                 String word = scanner.next();
-                if (word.length() == 4) {
+                if (word.length() == 10) {
                     Words.add(word);
                 }
             }
@@ -42,7 +42,7 @@ public class LetterCode extends SecretCode{
     }
     public void getCode() {
         if (Words.isEmpty()) {
-            System.err.println("No valid 4-letter words found in the file.");
+            System.err.println("No valid 10-letter words found in the file.");
             secretCode = null;
         }else {
             Random random = new Random();

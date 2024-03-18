@@ -179,8 +179,8 @@ public class Game {
             getHint();
             return false;
         }
-        else if (user_input.toCharArray().length != 4) {
-            System.out.println("Please enter 4 characters");
+        else if (user_input.toCharArray().length != 10) {
+            System.out.println("Please enter 10 characters");
             return false;
         }
         else if (this.currentCode.getClass().equals(NumbersCode.class)) {
@@ -202,15 +202,15 @@ public class Game {
         if (user_input.equalsIgnoreCase(this.currentCode.toString())) {
             this.currentCode.setDecipheredCode(true);
             this.currentPlayer.incrementCodesDeciphered();
-            this.currentPlayer.setNumberOfBulls(4);
+            this.currentPlayer.setNumberOfBulls(10);
             return true;
         } else {
             char[] guess_arr = user_input.toCharArray();
             char[] code_arr = this.currentCode.toString().toCharArray();
             int numberOfBulls = 0;
             int numberOfCows = 0;
-            for (int i = 0; i < 4; i++)
-                for (int j = 0; j < 4; j++)
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 10; j++)
                     if (guess_arr[i] == code_arr[j])
                         if (i == j)
                             ++numberOfBulls;
@@ -241,7 +241,7 @@ public class Game {
 
     public String getHint() {
         Random getRandom = new Random();
-        int randomIndex = getRandom.nextInt(4);
+        int randomIndex = getRandom.nextInt(10);
         char hintedChar = this.currentCode.getSecretCode().charAt(randomIndex);
         String hint = String.format("""
                 There is a %c at position %d
@@ -279,7 +279,7 @@ public class Game {
                 try (Scanner scanner = new Scanner(file)) {
 //                    scanner.hasNext();
                     String code = scanner.next();
-                    if (code.length() == 4) {
+                    if (code.length() == 10) {
                         try {
                             Integer.parseInt(code);
                             secretCode = new NumbersCode(code);

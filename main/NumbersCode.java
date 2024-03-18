@@ -22,7 +22,7 @@ public class NumbersCode extends SecretCode{
 
         do {
             Set<Integer> usedDigits = new HashSet<>();
-            int[] codeArray = new int[4];
+            int[] codeArray = new int[10];
 
             for (int i = 0; i < codeArray.length; i++) {
                 int nextDigit;
@@ -32,7 +32,7 @@ public class NumbersCode extends SecretCode{
                 usedDigits.add(nextDigit);
                 codeArray[i] = nextDigit;
             }
-            this.secretCode = codeArray[0] * 1000 + codeArray[1] * 100 + codeArray[2] * 10 + codeArray[3];
+            this.secretCode = codeArray[0] * 1000000000 + codeArray[1] * 100000000 + codeArray[2] * 10000000 + codeArray[3] * 1000000 + codeArray[4] * 100000 + codeArray[5] * 10000 + codeArray[6] * 1000 + codeArray[7] * 100 + codeArray[8] * 10 + codeArray[9];
         } while (this.secretCode < 1000);
     }
 
