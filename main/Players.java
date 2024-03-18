@@ -17,7 +17,6 @@ public class Players {
         this.playerFile = "Data\\players.ser";
         loadPlayers();
         extractTopTen();
-        return;
     }
 
     public void loadPlayers(){
@@ -71,6 +70,33 @@ public class Players {
         this.topTen = new TopTenList(10);
         for(Player player : this.players)
             this.topTen.add(player);
+    }
+
+    public String getLeaderboard(){
+        StringBuilder returnString = new StringBuilder();
+        Hashtable<String, Integer> topTen = this.topTen.getTopTen();
+        int longestName = this.getLongestUsername();
+        for(String name : topTen.keySet())
+        {
+            int score = topTen.get(name);
+            StringBuilder nameBuilder = new StringBuilder(name);
+            nameBuilder.append(" ".repeat(Math.max(0, longestName - nameBuilder.length() + 1)));
+            name = nameBuilder.toString();
+            returnString
+                    .append(name)
+                    .append(" : ")
+                    .append(score)
+                    .append("\n");
+        }
+        return returnString.toString();
+    }
+
+    public int getLongestUsername(){
+        int size = 0;
+        for(Player player : this.players)
+            if(size < player.getUsername().length())
+                size = player.getUsername().length();
+        return size;
     }
 
     //public void setPlayers(ArrayList<Player> players){this.players = players;}

@@ -54,10 +54,11 @@ public class Game {
         do {
             System.out.print("""
                     What do you want
-                        - play  {to request a code}
-                        - Stats {to see your stats}
-                        - load  {to load your save}
-                        - Quit  {to quit the game }
+                        - Play        {to request a code  }
+                        - Stats       {to see your stats  }
+                        - Load        {to load your save  }
+                        - Leaderboard {display leaderboard}
+                        - Quit        {to quit the game   }
                     >>""");
             user_input = getUserInput();
             if(user_input.equalsIgnoreCase("play"))
@@ -76,6 +77,10 @@ public class Game {
                 quit();
                 continue;
             }
+            else if (user_input.equalsIgnoreCase("leaderboard"))
+            {
+                System.out.println(this.playerGameMapping.getLeaderboard());
+            }
             else
                 continue;
 
@@ -86,10 +91,10 @@ public class Game {
                 System.out.print(
                         """
                           enter your guess or:
-                            - solution  {to see the solution}
-                            - hint      {to get a hint      }
-                            - later     {to save for later  }
-                            - quit      {to give up         }
+                            - Solution  {to see the solution}
+                            - Hint      {to get a hint      }
+                            - Later     {to save for later  }
+                            - Quit      {to give up         }
                         >>""");
 
                 user_input = getUserInput();

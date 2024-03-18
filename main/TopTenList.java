@@ -111,4 +111,19 @@ public class TopTenList {
         current.getNext().setPrev(null);
         current.setNext(null);
     }
+
+    public Hashtable<String, Integer> getTopTen(){
+        Hashtable<String, Integer> nameAndScore = new Hashtable<>();
+        Node current = this.head;
+        while(current != null)
+        {
+            nameAndScore.put(
+                    current.getData().getUsername(),
+                    current.getData().getCodesDeciphered()
+            );
+            current = current.getNext();
+        }
+        return nameAndScore;
+    }
+
 }
