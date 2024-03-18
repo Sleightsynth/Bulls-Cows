@@ -15,7 +15,7 @@ class GameTest {
 
     @BeforeEach
     void setUp() {
-        this.player = new Player("John", 2, 2, 5, 3);
+        this.player = new Player("John", 5, 5, 5, 3);
         this.game = new Game(new Players(), this.player, new SecretCode("test"));
     }
 
@@ -39,31 +39,31 @@ class GameTest {
     @Test
     public void makeNumberGuessTest() {
         game.requestCode("number");
-        assertFalse(game.enterGuess("12d3"));
-        assertFalse(game.enterGuess("123"));
-        assertFalse(game.enterGuess("12345"));
-        assertTrue(game.enterGuess("1234"));
-        assertEquals("1234", game.getGuess());
+        assertFalse(game.enterGuess("012d456789"));
+        assertFalse(game.enterGuess("012345678"));
+        //assertFalse(game.enterGuess("12345")); // not possible to enter more than 10 numbers as there can't be any repeats
+        assertTrue(game.enterGuess("0123456789"));
+        assertEquals("0123456789", game.getGuess());
     }
 
     @Test
     public void makeLetterGuessTest() {
         game.setCurrentCode(new LetterCode());
         assertFalse(game.enterGuess("12d3"));
-        assertFalse(game.enterGuess("asdfg"));
-        assertFalse(game.enterGuess("as"));
-        assertTrue(game.enterGuess("abcd"));
-        assertEquals("abcd", game.getGuess());
+        assertFalse(game.enterGuess("abcdefghijh"));
+        assertFalse(game.enterGuess("ab"));
+        assertTrue(game.enterGuess("abcdefghij"));
+        assertEquals("abcdefghij", game.getGuess());
     }
 
     @Test
     public void undoGuessTest() {
-        game.setGuess("1234");
-        assertEquals("1234", game.getGuess());
+        game.setGuess("0123456789");
+        assertEquals("0123456789", game.getGuess());
         game.undoGuess("y");
-        assertEquals("1234", game.getGuess());
+        assertEquals("0123456789", game.getGuess());
         game.undoGuess("n");
-        assertNotEquals("1234", game.getGuess());
+        assertNotEquals("0123456789", game.getGuess());
     }
 
     @Test
@@ -105,36 +105,36 @@ class GameTest {
 
     @Test
     public void testShowSolution() {
-        game.setCurrentCode(new LetterCode("abcd"));
-        assertEquals("abcd", game.showSolution().getSecretCode());
+        game.setCurrentCode(new LetterCode("abcdefghij"));
+        assertEquals("abcdefghij", game.showSolution().getSecretCode());
     }
 
     @Test
     public void testSaveGame() {
-        game.setCurrentCode(new NumbersCode("1234"));
+        game.setCurrentCode(new NumbersCode("1234567890"));
         game.saveGame();
         game.loadGame();
-        assertEquals("1234",game.showSolution().getSecretCode());
+        assertEquals("1234567890",game.showSolution().getSecretCode());
     }
 
     @Test
     public void testLoadGame() {
         player.setUsername("Alice");
-        game.setCurrentCode(new LetterCode("abcd"));
+        game.setCurrentCode(new LetterCode("abcdefghij"));
         game.saveGame();
         game.loadGame();
         assertNotNull(game.getCurrentCode());
-        assertEquals("abcd", game.getCurrentCode().toString());
+        assertEquals("abcdefghij", game.getCurrentCode().toString());
     }
 
     @Test
     public void testGetHint() {
-        game.setCurrentCode(new LetterCode("abcd"));
+        game.setCurrentCode(new LetterCode("abcdefghij"));
         String hint = game.getHint();
         assertNotNull(hint);
         assertNotEquals("", hint);
         System.out.println("Actual hint: " + hint);
-        assertTrue(hint.matches("^There is a [a-zA-Z] at position [1-4]\\n$"));
+        assertTrue(hint.matches("^There is a [a-zA-Z] at position [1-10]\\n$"));
     }
 
     @Test
