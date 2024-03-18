@@ -132,7 +132,7 @@ NOTE - for the purpose of marking, store my player name and tracking the secret 
 6. As a player I want to be able to show the solution so I can see a deciphered secret code for a code I can’t decipher
 
 
-12. As a player I want to be able to see the top 10 scores for number of successfully deciphered codes so I can see what I need to score to be within the top 10
+13. As a player I want to be able to see the top 10 scores for number of successfully deciphered codes so I can see what I need to score to be within the top 10
 
 
 14. As a player I want to be able to get a hint for a letter/number so I can decipher the secret code
