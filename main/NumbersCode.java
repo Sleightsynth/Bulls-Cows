@@ -33,7 +33,7 @@ public class NumbersCode extends SecretCode{
                 codeArray[i] = nextDigit;
             }
             this.secretCode = codeArray[0] * 1000000000 + codeArray[1] * 100000000 + codeArray[2] * 10000000 + codeArray[3] * 1000000 + codeArray[4] * 100000 + codeArray[5] * 10000 + codeArray[6] * 1000 + codeArray[7] * 100 + codeArray[8] * 10 + codeArray[9];
-        } while (this.secretCode < 1000);
+        } while (this.secretCode < 1000000000);
     }
 
     public String getSecretCode() {
