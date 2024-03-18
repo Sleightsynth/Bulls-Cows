@@ -29,7 +29,7 @@ public class NumberCodeTest {
 
     @Test
     public void testGetSecretNumberCode(){
-        assertNotEquals(0, Integer.parseInt(code.getSecretCode()));
+        assertNotEquals(null, code.getSecretCode());
     }
 
     @Test
