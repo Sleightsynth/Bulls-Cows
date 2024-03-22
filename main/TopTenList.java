@@ -3,7 +3,7 @@ package main;
 import java.util.*;
 
 public class TopTenList {
-    private static class Node {
+    public static class Node {
         private Node next;
         private Node prev;
         private final Player data;
@@ -36,6 +36,40 @@ public class TopTenList {
     private int size;
     private final int cap;
     private Node head;
+
+    public String getLeaderboard() {
+        StringBuilder returnString = new StringBuilder();
+        int longestName = this.getLongestUsername();
+
+        Node current = this.head;
+
+        while(current != null)
+        {
+            Player currentPlayer = current.getData();
+            int score = currentPlayer.getCodesDeciphered();
+            StringBuilder nameBuilder = new StringBuilder(currentPlayer.getUsername());
+            nameBuilder.append(" ".repeat(Math.max(0, longestName - nameBuilder.length() + 1)));
+            String name = nameBuilder.toString();
+            returnString
+                    .append(name)
+                    .append(" : ")
+                    .append(score)
+                    .append("\n");
+            current = current.getNext();
+        }
+        return returnString.toString();
+    }
+
+    public int getLongestUsername(){
+        int len = 0;
+        Node current = this.head;
+        while (current != null){
+            if(len < current.getData().getUsername().length())
+                len = current.getData().getUsername().length();
+            current = current.getNext();
+        }
+        return len;
+    }
 
     public TopTenList(int cap) {
         this.size = 0;

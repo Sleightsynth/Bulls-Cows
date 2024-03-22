@@ -80,6 +80,7 @@ public class Game {
             else if (user_input.equalsIgnoreCase("leaderboard"))
             {
                 System.out.println(this.playerGameMapping.getLeaderboard());
+                continue;
             }
             else
                 continue;
