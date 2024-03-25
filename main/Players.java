@@ -2,11 +2,16 @@ package main;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Hashtable;
 
 public class Players {
 
+    private  TopTenList topTen;
     private ArrayList<Player> players;
     private final String playerFile;
+
     public Players()
     {
         this.playerFile = "Data\\players.ser";
@@ -60,16 +65,14 @@ public class Players {
         return players;
     }
 
-    //public void setPlayers(ArrayList<Player> players){this.players = players;}
+    public void extractTopTen(){
+        this.topTen = new TopTenList(10);
+        for(Player player : this.players)
+            this.topTen.add(player);
+    }
 
-    //public String getPlayerFile() {return playerFile;}
-
-    //public void getAllPlayersBulls(){}
-
-    //public void getAllPlayersCows(){}
-
-    //public void getAllPlayersSecretCodesAttempted(){}
-
-    //public void getAllPlayersSecretCodesDeciphered(){}
-
+    public String getLeaderboard(){
+        extractTopTen();
+        return this.topTen.getLeaderboard();
+    }
 }

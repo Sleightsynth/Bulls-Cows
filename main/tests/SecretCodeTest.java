@@ -27,7 +27,7 @@ class SecretCodeTest {
 
     @Test
     public void testGetSecretCode() {
-        SecretCode secretCode = new SecretCode("abcd");
-        assertEquals("abcd", secretCode.getSecretCode());
+        SecretCode secretCode = new SecretCode("abcdefghij");
+        assertEquals("abcdefghij", secretCode.getSecretCode());
     }
 }

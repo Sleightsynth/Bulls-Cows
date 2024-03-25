@@ -13,7 +13,7 @@ public class PlayerTests {
 
     @BeforeEach
     public void setUp(){
-        player = new Player("JDoe", 3, 1, 3, 2);
+        player = new Player("JDoe", 6, 4, 3, 2);
     }
 
     @Test
@@ -21,8 +21,8 @@ public class PlayerTests {
         assertNotNull(player);
 
         assertEquals("JDoe", player.getUsername());
-        assertEquals( 3, player.getNumberOfBulls());
-        assertEquals( 1, player.getNumberOfCows());
+        assertEquals( 6, player.getNumberOfBulls());
+        assertEquals( 4, player.getNumberOfCows());
         assertEquals(3, player.getCodesAttempted());
         assertEquals(2, player.getCodesDeciphered());
     }

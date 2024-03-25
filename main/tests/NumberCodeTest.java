@@ -29,22 +29,26 @@ public class NumberCodeTest {
 
     @Test
     public void testGetSecretNumberCode(){
-        assertNotEquals(0, Integer.parseInt(code.getSecretCode()));
+        assertNotEquals(null, code.getSecretCode());
     }
 
     @Test
     public void testSecretCodeValid(){
         for (int i = 0; i < 100; i++) {
-            assertEquals(4, code.getSecretCode().length());
-
+            assertEquals(10, code.getSecretCode().length());
             char[] code_char_arr = code.getSecretCode().toCharArray();
-
             Set<Character> setCheck = new HashSet<>();
             setCheck.add(code_char_arr[0]);
             setCheck.add(code_char_arr[1]);
             setCheck.add(code_char_arr[2]);
             setCheck.add(code_char_arr[3]);
-            assertEquals(4, setCheck.size());
+            setCheck.add(code_char_arr[4]);
+            setCheck.add(code_char_arr[5]);
+            setCheck.add(code_char_arr[6]);
+            setCheck.add(code_char_arr[7]);
+            setCheck.add(code_char_arr[8]);
+            setCheck.add(code_char_arr[9]);
+            assertEquals(10, setCheck.size());
 
             code.getCode();
         }
